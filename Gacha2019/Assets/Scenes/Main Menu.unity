@@ -715,6 +715,7 @@ GameObject:
   - component: {fileID: 2096484579}
   - component: {fileID: 2096484578}
   - component: {fileID: 2096484581}
+  - component: {fileID: 2096484582}
   m_Layer: 0
   m_Name: CreditsSphere
   m_TagString: Untagged
@@ -822,6 +823,18 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &2096484582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2096484576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5932e10fa1aed9546b557eb5bab3cc52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2097458477
 GameObject:
   m_ObjectHideFlags: 0
