@@ -4,51 +4,59 @@ using UnityEngine;
 
 public class Missile : MonoBehaviour
 {
-    [SerializeField]
-    private float m_Speed = 10;
+    [SerializeField] private float m_Speed = 5;
+    [SerializeField] private float m_LifeTime = 5;
 
-    private float m_CurrentOffset = 0;
+    private float timer;
 
-    private Planet m_Planet;
+    private float m_RadiusPosition;
 
-    private Vector2 m_Direction;
-
-    private float m_BaseOffset;
-    private float m_Rotation;
-    
-    public void Launch(Vector2 _Direction, Planet _Planet, float _BaseOffset, float _Rotation)
+    private void Start()
     {
-        m_Direction = _Direction;
-        m_Planet = _Planet;
-        m_BaseOffset = _BaseOffset;
-        m_Rotation = _Rotation;
+        timer = m_LifeTime;
+        m_RadiusPosition = transform.position.magnitude;
     }
 
     private void Update()
     {
-        m_CurrentOffset += m_Speed * Time.deltaTime;
-        SetPositionOnPlanet(m_CurrentOffset);
-    }
+        float radius = transform.position.magnitude;
+        Vector3 up = transform.position / radius;
 
-    private void SetPositionOnPlanet(float _Offset)
-    {
-        if (m_Planet != null)
-        {
-            Vector3 localPosition = new Vector3(0, m_Planet.Radius, 0);
-            Quaternion rotation = Quaternion.Euler(-90 + m_BaseOffset + _Offset * m_Direction.x, 0, _Offset * m_Direction.y);
-            localPosition = rotation * localPosition;
-            transform.position = m_Planet.transform.position + localPosition;
-            transform.rotation = rotation;
-            transform.Rotate(Vector3.up, m_Rotation);
-        }
-    }
+        transform.LookAt(Player.Instance.transform);
+        transform.position += transform.forward * m_Speed * Time.deltaTime;
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.GetComponent<Planet>() == null && other.GetComponent<Player>() == null)
+        transform.position += up * (m_RadiusPosition - radius);
+
+        timer -= Time.deltaTime;
+
+        if (timer <= 0.0f)
         {
-            Destroy(other.gameObject);
             Destroy(gameObject);
         }
+    }
+
+    //private void SetPositionOnPlanet(float _Offset)
+    //{
+    //    if (m_Planet != null)
+    //    {
+    //        Vector3 localPosition = new Vector3(0, m_Planet.Radius, 0);
+    //        Quaternion rotation = Quaternion.Euler(-90 + m_BaseOffset + _Offset * m_Direction.x, 0, _Offset * m_Direction.y);
+    //        localPosition = rotation * localPosition;
+    //        transform.position = m_Planet.transform.position + localPosition;
+    //        transform.rotation = rotation;
+    //        transform.Rotate(Vector3.up, m_Rotation);
+    //    }
+    //}
+
+    private void OnTriggerEnter(Collider _other)
+    {
+        Player player = _other.GetComponent<Player>();
+
+        if (player)
+        {
+            Debug.Log("I hit you looser !");
+        }
+
+        Destroy(gameObject);
     }
 }

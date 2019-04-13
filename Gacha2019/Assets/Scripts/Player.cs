@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    static private Player instance = null;
+    static public Player Instance { get { return instance; } }
+
+
     [SerializeField]
     private Planet m_Planet;
 
@@ -16,6 +20,18 @@ public class Player : MonoBehaviour
     private float m_CurrentOffset = 0;
 
     private float m_TimeBeforeRegeneration = 0;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
+    }
 
     private void Start()
     {
