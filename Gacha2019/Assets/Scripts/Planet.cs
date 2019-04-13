@@ -40,6 +40,9 @@ public class Planet : MonoBehaviour
     [SerializeField]
     private GameObject m_TriggerEndPrefab = null;
 
+    [SerializeField]
+    private bool auto = false;
+
     private Vector3 m_LastMousePosition;
 
     private bool m_IsCursorPressed = false;
@@ -69,8 +72,11 @@ public class Planet : MonoBehaviour
 
     private void Start()
     {
-        ScalePlanet();
-        InitObjectOnPlanet();
+        if (auto)
+        {
+            ScalePlanet();
+            InitObjectOnPlanet();
+        }
     }
 
     private void Update()

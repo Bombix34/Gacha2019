@@ -6,8 +6,7 @@ public class Player : MonoBehaviour
 {
     static private Player instance = null;
     static public Player Instance { get { return instance; } }
-
-
+    
     [SerializeField]
     private Planet m_Planet;
 
@@ -16,10 +15,14 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private GameObject m_Missile;
+    
+    [SerializeField]
+    private float m_Speed = 0.3f;
 
-    private float m_CurrentOffset = 0;
+    [SerializeField]
+    private Vector3 m_SupposedPosition = new Vector3(0, 0, -20);
 
-    private float m_TimeBeforeRegeneration = 0;
+    private Rigidbody m_Rigidbody;
 
     private void Awake()
     {
@@ -35,42 +38,30 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        SetPositionOnPlanet(0);
+        m_Rigidbody = GetComponent<Rigidbody>();
     }
 
     private void Update()
     {
-        if (m_TimeBeforeRegeneration > 0)
-        {
-            m_TimeBeforeRegeneration -= Time.deltaTime;
-        }
-
-        if (m_Planet != null && Physics.SphereCast(transform.position + transform.up, 0.5f, transform.forward, out RaycastHit _HitInfo, 0.3f))
-        {
-            m_CurrentOffset -= m_Planet.Speed * Time.deltaTime;
-            m_TimeBeforeRegeneration = 0.5f;
-        }
-
-        if (m_TimeBeforeRegeneration <= 0 && m_CurrentOffset < 0)
-        {
-            m_CurrentOffset += m_OffsetRegeneration * Time.deltaTime;
-            if (m_CurrentOffset > 0)
-            {
-                m_CurrentOffset = 0;
-            }
-        }
-        SetPositionOnPlanet(m_CurrentOffset);
+        Vector3 position = transform.position;
+        position = position.normalized * Mathf.Abs(m_SupposedPosition.z * 0.5f);
+        transform.position = position;
     }
 
-    private void SetPositionOnPlanet(float _Offset)
+    private void FixedUpdate()
     {
-        if (m_Planet != null)
+        Vector3 up = (transform.position - m_Planet.transform.position).normalized;
+        transform.up = up;
+        Physics.gravity = up * -9.81f;
+
+        Vector3 wantedMovement = m_SupposedPosition - transform.position;
+        float upMultiplier = Vector3.Dot(transform.up, wantedMovement);
+        wantedMovement -= transform.up * upMultiplier;
+        wantedMovement -= transform.up * 0.5f;
+        if (wantedMovement.magnitude > m_Speed)
         {
-            Vector3 localPosition = new Vector3(0, m_Planet.Radius, 0);
-            Quaternion rotation = Quaternion.Euler(-90 + _Offset, 0, 0);
-            localPosition = rotation * localPosition;
-            transform.position = m_Planet.transform.position + localPosition;
-            transform.rotation = rotation;
+            wantedMovement = wantedMovement.normalized * m_Speed;
         }
+        m_Rigidbody.AddForce(wantedMovement, ForceMode.Impulse);
     }
 }
