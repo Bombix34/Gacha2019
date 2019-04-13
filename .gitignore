@@ -7,6 +7,13 @@
 /[Bb]uilds/
 /[Ll]ogs/
 
+Gacha2019/Library/
+Gacha2019/Temp/
+Gacha2019/Obj/
+Gacha2019/Build/
+Gacha2019/Builds/
+Gacha2019/Logs/
+
 # Never ignore Asset meta data
 !/[Aa]ssets/**/*.meta
 
