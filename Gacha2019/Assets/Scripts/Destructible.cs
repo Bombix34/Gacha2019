@@ -11,7 +11,7 @@ public class Destructible : MonoBehaviour
     [SerializeField]
     private int m_BoostSpeedStepNeeded = 1;
 
-    [SerealizeField]
+    [SerializeField]
     private bool m_CanBeDestroyedByMissile = false;
 
     [SerializeField]

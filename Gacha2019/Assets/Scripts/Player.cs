@@ -14,6 +14,10 @@ public class Player : MonoBehaviour
 
     private float m_KnockBackDuration = 0;
 
+    private Animator m_Animator;
+
+    private Material[] baseMats;
+
     private void Awake()
     {
         if (instance == null)
@@ -29,6 +33,10 @@ public class Player : MonoBehaviour
     private void Start()
     {
         m_Rigidbody = GetComponent<Rigidbody>();
+        m_Animator = GetComponent<Animator>();
+        m_Animator.SetBool("Grounded", true);
+        m_Animator.SetFloat("MoveSpeed", 1f);
+        baseMats = GetComponentInChildren<SkinnedMeshRenderer>().materials;
     }
 
     private void Update()
@@ -67,5 +75,10 @@ public class Player : MonoBehaviour
     public void KnockBack(float _KnockBackDuration)
     {
         m_KnockBackDuration = _KnockBackDuration;
+    }
+
+    public void ResetMaterial()
+    {
+        GetComponentInChildren<SkinnedMeshRenderer>().materials = baseMats;
     }
 }
