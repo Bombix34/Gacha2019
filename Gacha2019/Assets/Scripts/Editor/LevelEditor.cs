@@ -35,8 +35,18 @@ public class LevelEditor : EditorWindow
     int selectedObjectIndex;
 
     GameObject selectedObject;
-    
+
+    bool _paintMode
+    {
+        get { return plEdit.PaintModeActive; }
+        set
+        {
+            plEdit.PaintModeActive = value;
+        }
+
+    }
     bool _editMode;
+   
 
     string MainPath = "Assets/Resources/Levels/";
 
@@ -65,19 +75,35 @@ public class LevelEditor : EditorWindow
 
         LevelsManaging();
 
-
-        if (!_editMode)
-            GUI.color = Color.gray;
+        if (!_paintMode)
+            GUI.color = Color.white;
         else
             GUI.color = Color.green;
 
-       
 
-        if(GUILayout.Button("EDIT MODE",GUILayout.Height(50)))
+
+        EditorGUILayout.BeginHorizontal();
+
+        if(GUILayout.Button("PAINT", GUILayout.Width(50),GUILayout.Height(50)))
+        {
+                _paintMode = !_paintMode;
+        }
+
+        if (!_editMode)
+            GUI.color = Color.white;
+        else
+            GUI.color = Color.green;
+
+        if (GUILayout.Button("EDIT MODE",GUILayout.Height(50)))
         {
             _editMode = !_editMode;
             plEdit.EditModeActive = _editMode;
+
+            
         }
+
+        EditorGUILayout.EndHorizontal();
+
         SaveLevel();
 
         GUI.color = Color.white;
@@ -208,7 +234,7 @@ public class LevelEditor : EditorWindow
     void DrawButtons()
     {
         
-        selectedObjectIndex = GUILayout.SelectionGrid(selectedObjectIndex,Previews,3);
+        selectedObjectIndex = GUILayout.SelectionGrid(selectedObjectIndex,Previews,6,GUILayout.Width(600));
         selectedObject = AllPrefabs[selectedObjectIndex];
 
         if (plEdit)
@@ -249,11 +275,18 @@ public class LevelEditor : EditorWindow
 
     void OnSceneGUI(SceneView sceneView)
     {
+        DrawLine();
+
         // Do your drawing here using Handles.
         Handles.BeginGUI();
+
+        GUI.color = Color.green;
         if (plEdit.EditModeActive)
             GUILayout.Box("EDIT ACTIVE");
-            
+
+        if (_paintMode)
+            GUILayout.Box("PAINT ACTIVE",GUILayout.Width(80));
+
 
         // Do your drawing here using GUI.
         Handles.EndGUI();
@@ -272,6 +305,24 @@ public class LevelEditor : EditorWindow
     {
         plEdit.m_Parent = FindObjectOfType<Planet>().transform.GetChild(0);
     }
+
+    void DrawLine()
+    {/*
+        Event e = Event.current;
+
+        Debug.Log(plEdit.MakeLine);
+
+        Vector3 assetSize = AllPrefabs[selectedObjectIndex].GetComponent<MeshRenderer>().bounds.size;
+
+        assetSize.y = 0;
+
+        float currentAssetSize = assetSize.magnitude;
+
+        Vector3 mousePos = e.mousePosition;
+        */
+
+    }
+
 
 
 }
