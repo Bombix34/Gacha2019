@@ -11,10 +11,13 @@ public class Planet : MonoBehaviour
     private float m_Radius = 10;
 
     [SerializeField]
-    private int m_ObstacleCount = 50;
+    private int m_ObstacleCount = 40;
 
     [SerializeField]
-    private int m_DestructibleCount = 30;
+    private int m_DestructibleCount = 15;
+
+    [SerializeField]
+    private int m_DestructibleStoneCount = 15;
 
     [SerializeField]
     private int m_ShooterCount = 5;
@@ -39,6 +42,9 @@ public class Planet : MonoBehaviour
 
     [SerializeField]
     private GameObject m_DestructiblePrefab = null;
+
+    [SerializeField]
+    private GameObject m_DestructibleStonePrefab = null;
 
     [SerializeField]
     private GameObject m_ShooterPrefab = null;
@@ -72,6 +78,16 @@ public class Planet : MonoBehaviour
 
     private bool m_IsBoosting = false;
     public bool IsBoosting => m_IsBoosting;
+
+    private int m_BoostStep = 0;
+
+    public int BoostStep
+    {
+        get
+        {
+            return m_BoostStep;
+        }
+    }
 
     public float Radius
     {
@@ -137,6 +153,7 @@ public class Planet : MonoBehaviour
                 if (m_BoostDuration <= 0f)
                 {
                     m_IsBoosting = false;
+                    m_BoostStep = 0;
                     m_SpeedMultiplier = 1f;
                 }
             }
@@ -145,6 +162,9 @@ public class Planet : MonoBehaviour
         {
             transform.Rotate(m_KnockBackPower * Time.deltaTime, 0, 0);
             m_KnockBackPower -= m_KnockBackRecoverySpeed * Time.deltaTime;
+            m_IsBoosting = false;
+            m_BoostStep = 0;
+            m_SpeedMultiplier = 1f;
         }
     }
 
@@ -169,6 +189,17 @@ public class Planet : MonoBehaviour
                 Quaternion rotation = Quaternion.Euler(Random.Range(0.0f, 360.0f), Random.Range(0.0f, 360.0f), 0);
                 localPosition = rotation * localPosition;
                 GameObject go = Instantiate(m_DestructiblePrefab, transform.position + localPosition, rotation, m_PlanetAutoRotation);
+                m_objectsOnPlanet.Add(go);
+            }
+        }
+        if (m_DestructibleStonePrefab != null)
+        {
+            for (int i = 0; i < m_DestructibleStoneCount; i++)
+            {
+                Vector3 localPosition = new Vector3(0, Radius, 0);
+                Quaternion rotation = Quaternion.Euler(Random.Range(0.0f, 360.0f), Random.Range(0.0f, 360.0f), 0);
+                localPosition = rotation * localPosition;
+                GameObject go = Instantiate(m_DestructibleStonePrefab, transform.position + localPosition, rotation, m_PlanetAutoRotation);
                 m_objectsOnPlanet.Add(go);
             }
         }
@@ -245,6 +276,7 @@ public class Planet : MonoBehaviour
     {
         if (m_KnockBackPower <= 0)
         {
+            m_BoostStep++;
             m_IsBoosting = true;
             m_SpeedMultiplier += _SpeedMultiplier;
             m_BoostDuration = _BoostDuration;

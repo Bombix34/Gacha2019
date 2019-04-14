@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -176,6 +176,7 @@ MonoBehaviour:
   m_Radius: 10
   m_ObstacleCount: 50
   m_DestructibleCount: 30
+  m_DestructibleStoneCount: 15
   m_ShooterCount: 5
   m_SpeedPadCount: 10
   m_ButterflyCount: 6
@@ -185,6 +186,8 @@ MonoBehaviour:
   m_ObstaclePrefab: {fileID: 1212949519796995349, guid: 56df719eada82fd47916006db2a35eb9,
     type: 3}
   m_DestructiblePrefab: {fileID: 8391260634462876139, guid: 61ad5823962227f49b65f282fd48b264,
+    type: 3}
+  m_DestructibleStonePrefab: {fileID: 3025358793768948147, guid: 16c6b1565af5a894cbda02ac9bf298c6,
     type: 3}
   m_ShooterPrefab: {fileID: 95285125588391590, guid: fe2116dca00034743861ee248c57a2ac,
     type: 3}
@@ -520,6 +523,7 @@ MonoBehaviour:
   m_Radius: 0.05
   m_ObstacleCount: 50
   m_DestructibleCount: 30
+  m_DestructibleStoneCount: 15
   m_ShooterCount: 5
   m_SpeedPadCount: 10
   m_ButterflyCount: 6
@@ -528,6 +532,7 @@ MonoBehaviour:
   m_PlanetAutoRotation: {fileID: 0}
   m_ObstaclePrefab: {fileID: 0}
   m_DestructiblePrefab: {fileID: 0}
+  m_DestructibleStonePrefab: {fileID: 0}
   m_ShooterPrefab: {fileID: 0}
   m_TriggerEndPrefab: {fileID: 0}
   m_SpeedPadPrefab: {fileID: 0}
