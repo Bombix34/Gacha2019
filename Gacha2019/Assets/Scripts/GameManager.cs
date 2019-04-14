@@ -44,7 +44,6 @@ public class GameManager : MonoBehaviour
             {
                 m_TimeScaleDuration -= Time.deltaTime;
                 Time.timeScale = 1f-(Mathf.Sin((Mathf.PI * m_TimeScaleDuration) / (m_TotalTimeScaleDuration)) * (1f - m_TargetTimeScale));
-                Debug.Log(Time.timeScale);
                 //Mathf.Lerp(1f, m_TargetTimeScale, 4f * (-Mathf.Pow(m_TimeScaleDuration, 2f) + m_TimeScaleDuration));
             }
             else if (Time.timeScale != 1f)
