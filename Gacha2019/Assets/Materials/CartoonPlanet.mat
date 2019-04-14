@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: CartoonPlanet
-  m_Shader: {fileID: 4800000, guid: f2815bb31ddc99247856aa459640cf81, type: 3}
+  m_Shader: {fileID: 4800000, guid: f311acd2195b6274a8959352455458c8, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 1
@@ -91,5 +91,6 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
+    - _AmbientColor: {r: 0.4, g: 0.4, b: 0.4, a: 1}
     - _Color: {r: 0, g: 0.5882353, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
