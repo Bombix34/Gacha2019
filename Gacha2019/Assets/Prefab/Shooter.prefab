@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_RocketPrefab: {fileID: 2852562355393972748, guid: 4a3dc5870edf24a4a9f0e5bd65332d8f,
     type: 3}
-  m_FireRate: 1
+  m_FireRate: 0.3
   m_Range: 10
 --- !u!1 &3245182694609302752
 GameObject:
