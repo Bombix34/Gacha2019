@@ -42,13 +42,17 @@ public class Destructible : MonoBehaviour
         }
 
         Missile missile = other.transform.GetComponent<Missile>();
-        if(missile)
+        if (missile)
         {
-            if(m_CanBeDestroyedByMissile)
+            if (missile.Level >= 3)
             {
-                if(m_MissileNeedsToBoostToDestroy)
+                Destroy(gameObject);
+            }
+            else if (m_CanBeDestroyedByMissile)
+            {
+                if (m_MissileNeedsToBoostToDestroy)
                 {
-                    if(missile.IsBoosting)
+                    if (missile.IsBoosting)
                     {
                         Destroy(missile.gameObject);
                         Destroy(gameObject);
