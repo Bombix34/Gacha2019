@@ -33,9 +33,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         m_Rigidbody = GetComponent<Rigidbody>();
-        m_Animator = GetComponent<Animator>();
-        m_Animator.SetBool("Grounded", true);
-        m_Animator.SetFloat("MoveSpeed", 1f);
+        m_Animator = GetComponentInChildren<Animator>();
         baseMats = GetComponentInChildren<SkinnedMeshRenderer>().materials;
     }
 
@@ -80,5 +78,10 @@ public class Player : MonoBehaviour
     public void ResetMaterial()
     {
         GetComponentInChildren<SkinnedMeshRenderer>().materials = baseMats;
+    }
+
+    public Animator GetPlayerAnim()
+    {
+        return m_Animator;
     }
 }
