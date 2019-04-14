@@ -242,6 +242,7 @@ MonoBehaviour:
   m_DestructibleCount: 30
   m_ShooterCount: 5
   m_SpeedPadCount: 10
+  m_ButterflyCount: 6
   m_MovingSpeed: 1
   m_PlanetModel: {fileID: 1433251013}
   m_PlanetAutoRotation: {fileID: 82193489}
@@ -254,6 +255,8 @@ MonoBehaviour:
   m_TriggerEndPrefab: {fileID: 2253781944221876281, guid: e394eab6df4d4436c8e2889465ad5563,
     type: 3}
   m_SpeedPadPrefab: {fileID: 2404365836097373513, guid: 5a80d892a383a9848801cdb285338b9d,
+    type: 3}
+  m_ButterflyPrefab: {fileID: 906238741314647221, guid: 69348574843832349b52e27d55bd6fef,
     type: 3}
   auto: 1
 --- !u!4 &163754182
@@ -768,7 +771,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6bae54faa41340cca3db8c82b003af0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameoverPlaceholder: {fileID: 0}
+  m_ButterflyObjectiveCount: 04000000010000000100000001000000010000000100000001000000010000000100000001000000
 --- !u!4 &666008446
 Transform:
   m_ObjectHideFlags: 0
@@ -972,6 +975,7 @@ MonoBehaviour:
   m_DestructibleCount: 30
   m_ShooterCount: 5
   m_SpeedPadCount: 10
+  m_ButterflyCount: 6
   m_MovingSpeed: 0.5
   m_PlanetModel: {fileID: 533995540}
   m_PlanetAutoRotation: {fileID: 155033132}
@@ -980,6 +984,7 @@ MonoBehaviour:
   m_ShooterPrefab: {fileID: 0}
   m_TriggerEndPrefab: {fileID: 0}
   m_SpeedPadPrefab: {fileID: 0}
+  m_ButterflyPrefab: {fileID: 0}
   auto: 1
 --- !u!4 &890384026
 Transform:

@@ -5,6 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField]
+    List<int> m_ButterflyObjectiveCount = null;
+
+    int m_CurrentLayer = 0;
+
+    int m_CurrentButterflyKilled = 0;
 
     bool isGameOver = false;
 
@@ -22,6 +28,18 @@ public class GameManager : MonoBehaviour
         {
             Restart();
         }
+    }
+
+    public bool IsButterflyObjectiveDone()
+    {
+        m_CurrentButterflyKilled++;
+        if(m_CurrentButterflyKilled >= m_ButterflyObjectiveCount[m_CurrentLayer])
+        {
+            m_CurrentLayer++;
+            m_CurrentButterflyKilled = 0;
+            return true;
+        }
+        return false;
     }
 
 
