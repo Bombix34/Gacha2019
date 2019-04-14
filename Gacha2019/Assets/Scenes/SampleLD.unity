@@ -427,6 +427,7 @@ MonoBehaviour:
   m_RotationSpeed: 40
   m_Radius: 10
   layers:
+  - {fileID: 6520062155740228382, guid: c7d3c9a88c0a5ac49a71ae5640b133de, type: 3}
   - {fileID: 8053756946762994994, guid: f4a41befd54ad2c4fa494dfb2779f431, type: 3}
   - {fileID: 4823015059942913928, guid: d99ff0639d4f7ba429df21853e873b1e, type: 3}
   m_MovingSpeed: 1

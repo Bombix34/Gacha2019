@@ -49,14 +49,14 @@ public class Planet : MonoBehaviour
     private int m_MobileCurrentFingerId;
     private int m_MobileLastTouchCount = 0;
 
-    private int m_BoostStep = 0; 
- 
-    public int BoostStep 
-    { 
-        get 
-        { 
-            return m_BoostStep; 
-        } 
+    private int m_BoostStep = 0;
+
+    public int BoostStep
+    {
+        get
+        {
+            return m_BoostStep;
+        }
     }
 
     public float Radius
@@ -91,7 +91,7 @@ public class Planet : MonoBehaviour
     {
         if (Application.platform == RuntimePlatform.Android)
         {
-            RotateFromComputer();
+            RotateFromMobile();
         }
         else
         {
@@ -111,7 +111,7 @@ public class Planet : MonoBehaviour
                     {
                         Player.Instance.transform.GetChild(1).GetComponent<Renderer>().material = m_PlayerMaterials[0];
                     }
-                    m_BoostStep = 0; 
+                    m_BoostStep = 0;
                     m_SpeedMultiplier = 1f;
                 }
             }
@@ -126,7 +126,7 @@ public class Planet : MonoBehaviour
             {
                 Player.Instance.transform.GetChild(1).GetComponent<Renderer>().material = m_PlayerMaterials[0];
             }
-            m_BoostStep = 0; 
+            m_BoostStep = 0;
             m_SpeedMultiplier = 1f;
         }
     }
@@ -140,7 +140,8 @@ public class Planet : MonoBehaviour
         {
             currentLayer = Instantiate(layers[currentLayerIndex], m_PlanetAutoRotation);
             currentLayerIndex++;
-
+            transform.rotation = Quaternion.identity;
+            transform.GetChild(0).rotation = Quaternion.identity;
             return true;
         }
         else
@@ -161,7 +162,7 @@ public class Planet : MonoBehaviour
     {
         if (m_KnockBackPower <= 0)
         {
-            m_BoostStep++; 
+            m_BoostStep++;
             m_IsBoosting = true;
             if (m_PlayerMaterials[1])
             {
@@ -234,7 +235,10 @@ public class Planet : MonoBehaviour
             Vector3 oldVector = m_LastMousePosition - middleOfScreen;
             Vector3 newVector = currentMousePosition - middleOfScreen;
 
-            float rotation = Vector3.SignedAngle(oldVector, newVector, Vector3.forward);
+            //Rotation with angle
+            //float rotation = Vector3.SignedAngle(oldVector, newVector, Vector3.forward);
+
+            float rotation = currentMousePosition.x - m_LastMousePosition.x;
             float rotationToApply = rotation * m_MovingSpeed;
             if (rotationToApply > m_MaxMovingSpeed)
             {
@@ -263,33 +267,38 @@ public class Planet : MonoBehaviour
             m_MobileLastTouchCount = 0;
         }
 
-        if (Input.touches[0].fingerId != m_MobileCurrentFingerId)
-        {
-            m_MobileCurrentFingerId = Input.touches[0].fingerId;
-            m_LastMousePosition = Input.touches[0].position;
-        }
 
         if (m_MobileLastTouchCount > 0)
         {
-            Vector3 currentMousePosition = Input.touches[0].position;
-            Vector3 middleOfScreen = new Vector3(Screen.width * 0.5f, Screen.height * 0.5f, 0);
-
-            Vector3 oldVector = m_LastMousePosition - middleOfScreen;
-            Vector3 newVector = currentMousePosition - middleOfScreen;
-
-            float rotation = Vector3.SignedAngle(oldVector, newVector, Vector3.forward);
-            float rotationToApply = rotation * m_MovingSpeed;
-            if (rotationToApply > m_MaxMovingSpeed)
+            if (Input.touches[0].fingerId != m_MobileCurrentFingerId)
             {
-                rotationToApply = m_MaxMovingSpeed;
+                m_MobileCurrentFingerId = Input.touches[0].fingerId;
             }
-            if (rotationToApply < -m_MaxMovingSpeed)
+            else
             {
-                rotationToApply = -m_MaxMovingSpeed;
-            }
-            m_PlanetAutoRotation.Rotate(0, 0, rotationToApply, Space.World);
+                Vector3 currentMousePosition = Input.touches[0].position;
+                Vector3 middleOfScreen = new Vector3(Screen.width * 0.5f, Screen.height * 0.5f, 0);
 
-            m_LastMousePosition = currentMousePosition;
+                Vector3 oldVector = m_LastMousePosition - middleOfScreen;
+                Vector3 newVector = currentMousePosition - middleOfScreen;
+
+                //Rotation with angle
+                //float rotation = Vector3.SignedAngle(oldVector, newVector, Vector3.forward);
+
+                float rotation = currentMousePosition.x - m_LastMousePosition.x;
+                float rotationToApply = rotation * m_MovingSpeed;
+                if (rotationToApply > m_MaxMovingSpeed)
+                {
+                    rotationToApply = m_MaxMovingSpeed;
+                }
+                if (rotationToApply < -m_MaxMovingSpeed)
+                {
+                    rotationToApply = -m_MaxMovingSpeed;
+                }
+                m_PlanetAutoRotation.Rotate(0, 0, rotationToApply, Space.World);
+
+                m_LastMousePosition = currentMousePosition;
+            }
         }
     }
 }
