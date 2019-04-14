@@ -7,9 +7,10 @@ public class DeathLimit : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.tag == "Player")
+        Player player = collision.GetComponent<Player>();
+        if (player)
         {
-            GameManager.instance.GameOver(collision.gameObject);
+            GameManager.instance.GameOver(player.gameObject);
         }
     }
 }

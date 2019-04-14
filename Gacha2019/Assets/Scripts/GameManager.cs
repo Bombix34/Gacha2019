@@ -6,24 +6,21 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
 
-    bool isGameOver=false;
+    bool isGameOver = false;
 
-    public GameObject gameoverPlaceholder;
+    //public GameObject gameoverPlaceholder;
 
 
     void Start()
     {
-        
+
     }
 
     void Update()
     {
-        if(isGameOver)
+        if (isGameOver)
         {
-            if(Input.GetKeyDown(KeyCode.Space))
-            {
-                Restart();
-            }
+            Restart();
         }
     }
 
@@ -32,12 +29,13 @@ public class GameManager : MonoBehaviour
     {
         isGameOver = true;
         player.GetComponent<Player>().enabled = false;
-        Instantiate(gameoverPlaceholder, transform.position, Quaternion.identity);
+        //Instantiate(gameoverPlaceholder, transform.position, Quaternion.identity);
     }
 
     public void Restart()
     {
-        SceneManager.LoadScene(2);
+        Debug.LogWarning("Restart !");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
 
