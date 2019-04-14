@@ -25,6 +25,9 @@ public class Planet : MonoBehaviour
     [SerializeField]
     private float m_KnockBackRecoverySpeed = 70;
 
+    [SerializeField]
+    private List<Material> m_PlayerMaterials = null;
+
     private Vector3 m_LastMousePosition;
 
     private bool m_IsCursorPressed = false;
@@ -152,6 +155,7 @@ public class Planet : MonoBehaviour
         {
             m_BoostStep++; 
             m_IsBoosting = true;
+            Player.Instance.transform.GetChild(1).GetComponent<Renderer>().material = m_PlayerMaterials[1];
             m_SpeedMultiplier += _SpeedMultiplier;
             m_BoostDuration = _BoostDuration;
         }
@@ -192,6 +196,7 @@ public class Planet : MonoBehaviour
         {
             m_KnockBackPower = _KnockBackPower;
             m_IsBoosting = false;
+            Player.Instance.transform.GetChild(1).GetComponent<Renderer>().material = m_PlayerMaterials[0];
             m_SpeedMultiplier = 1f;
         }
     }
