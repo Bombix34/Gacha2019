@@ -13,21 +13,19 @@ public class Cloud : MonoBehaviour
 
     float fadeSpeed;
 
-    float radius;
+    float radius=11;
 
     void Start()
     {
-        radius = 12f;
         rotationSpeed = Random.Range(8f, 20f);
-        minSize = Random.Range(0.5f, 0.6f);
-        maxSize = Random.Range(1.2f, 1.5f);
+        minSize = Random.Range(0.01f, 0.1f);
+        maxSize = Random.Range(1.5f, 2.2f);
 
         fadeSpeed = Random.Range(0.2f, 0.6f);
 
         randChrono = Random.Range(0.5f, 2f);
 
-        InitPosition();
-        InitRotation();
+        InitCloud();
     }
 
     void Update()
@@ -41,9 +39,18 @@ public class Cloud : MonoBehaviour
         }
     }
 
+    public void InitCloud()
+    {
+        float initSize = Random.Range(minSize, maxSize);
+        transform.localScale = new Vector3(initSize, initSize, initSize);
+
+        InitPosition();
+        InitRotation();
+    }
+
     public void InitPosition()
     {
-        transform.position = RandomPointOnUnitCircle(11f);
+        transform.position = RandomPointOnUnitCircle();
         transform.position = new Vector3(transform.position.x, transform.position.y, 20f);
     }
 
@@ -55,7 +62,7 @@ public class Cloud : MonoBehaviour
         transform.rotation = qt;
     }
 
-    public static Vector2 RandomPointOnUnitCircle(float radius)
+    public Vector2 RandomPointOnUnitCircle()
     {
         float angle = Random.Range(0f, Mathf.PI * 2);
         float x = Mathf.Sin(angle) * radius;
