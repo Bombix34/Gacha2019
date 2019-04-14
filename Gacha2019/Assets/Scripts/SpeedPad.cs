@@ -11,13 +11,6 @@ public class SpeedPad : MonoBehaviour
     [SerializeField]
     float m_BoostDurationInSeconds = 1f;
 
-    BeginBoostEvent m_OnBeginBoost = new BeginBoostEvent();
-
-    public BeginBoostEvent OnBeginBoost
-    {
-        get { return m_OnBeginBoost; }
-    }
-
     // Start is called before the first frame update
     void Start()
     {
@@ -34,7 +27,7 @@ public class SpeedPad : MonoBehaviour
         Player player = other.GetComponent<Player>();
         if (player)
         {
-            m_OnBeginBoost.Invoke(m_SpeedMultiplier, m_BoostDurationInSeconds);
+            Planet.instance.OnBoostBegin(m_SpeedMultiplier, m_BoostDurationInSeconds);
         }
     }
 }

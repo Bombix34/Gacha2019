@@ -5,22 +5,12 @@ using UnityEngine.Events;
 
 public class Destructible : MonoBehaviour
 {
-    private DestructibleTriggerEvent m_OnTriggerEnter = new DestructibleTriggerEvent();
-
-    public DestructibleTriggerEvent OnDestructibleTriggerEnter
-    {
-        get
-        {
-            return m_OnTriggerEnter;
-        }
-    }
-    
     private void OnCollisionEnter(Collision other)
     {
         Player player = other.transform.GetComponent<Player>();
-        if (player)
+        if (player && Planet.instance.IsBoosting)
         {
-            m_OnTriggerEnter.Invoke(this);
+            Destroy(gameObject);
         }
     }
 }

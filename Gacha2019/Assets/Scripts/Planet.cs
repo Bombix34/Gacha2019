@@ -66,6 +66,7 @@ public class Planet : MonoBehaviour
     private float m_BoostDuration = 0f;
 
     private bool m_IsBoosting = false;
+    public bool IsBoosting => m_IsBoosting;
 
     public float Radius
     {
@@ -155,11 +156,6 @@ public class Planet : MonoBehaviour
                 Quaternion rotation = Quaternion.Euler(Random.Range(0.0f, 360.0f), Random.Range(0.0f, 360.0f), 0);
                 localPosition = rotation * localPosition;
                 GameObject go = Instantiate(m_DestructiblePrefab, transform.position + localPosition, rotation, m_PlanetAutoRotation);
-                Destructible destructible = go.transform.GetChild(0).GetComponent<Destructible>();
-                if (destructible)
-                {
-                    destructible.OnDestructibleTriggerEnter.AddListener(OnDestructibleTriggered);
-                }
                 m_objectsOnPlanet.Add(go);
             }
         }
@@ -188,11 +184,6 @@ public class Planet : MonoBehaviour
                 Quaternion rotation = Quaternion.Euler(Random.Range(0.0f, 360.0f), Random.Range(0.0f, 360.0f), 0);
                 localPosition = rotation * localPosition;
                 GameObject go = Instantiate(m_SpeedPadPrefab, transform.position + localPosition, rotation, m_PlanetAutoRotation);
-                SpeedPad test = go.transform.GetChild(0).GetComponent<SpeedPad>();
-                if (test)
-                {
-                    test.OnBeginBoost.AddListener(OnBoostBegin);
-                }
                 m_objectsOnPlanet.Add(go);
             }
         }
@@ -237,7 +228,7 @@ public class Planet : MonoBehaviour
         }
     }
 
-    void OnBoostBegin(float _SpeedMultiplier, float _BoostDuration)
+    public void OnBoostBegin(float _SpeedMultiplier, float _BoostDuration)
     {
         m_IsBoosting = true;
         m_SpeedMultiplier += _SpeedMultiplier;
