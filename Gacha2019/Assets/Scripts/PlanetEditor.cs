@@ -86,6 +86,9 @@ public class PlanetEditor : MonoBehaviour
             if (Physics.Raycast(ray, out hit))
             {
                 GameObject go = Instantiate(prefab, m_Parent);
+                Undo.RegisterCreatedObjectUndo(go, "Created go");
+
+                go.transform.localScale = Vector3.one;
                 go.transform.position = hit.point;
                 go.transform.up = go.transform.position.normalized;
             }
