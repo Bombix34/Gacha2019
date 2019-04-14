@@ -23,6 +23,9 @@ public class Planet : MonoBehaviour
     private int m_SpeedPadCount = 10;
 
     [SerializeField]
+    private int m_ButterflyCount = 6;
+
+    [SerializeField]
     private float m_MovingSpeed = 0.5f;
 
     [SerializeField]
@@ -47,6 +50,9 @@ public class Planet : MonoBehaviour
     private GameObject m_SpeedPadPrefab = null;
 
     [SerializeField]
+    private GameObject m_ButterflyPrefab = null;
+
+    [SerializeField]
     private bool auto = false;
 
     private Vector3 m_LastMousePosition;
@@ -60,6 +66,7 @@ public class Planet : MonoBehaviour
     private float m_BoostDuration = 0f;
 
     private bool m_IsBoosting = false;
+    public bool IsBoosting => m_IsBoosting;
 
     public float Radius
     {
@@ -149,11 +156,6 @@ public class Planet : MonoBehaviour
                 Quaternion rotation = Quaternion.Euler(Random.Range(0.0f, 360.0f), Random.Range(0.0f, 360.0f), 0);
                 localPosition = rotation * localPosition;
                 GameObject go = Instantiate(m_DestructiblePrefab, transform.position + localPosition, rotation, m_PlanetAutoRotation);
-                Destructible destructible = go.transform.GetChild(0).GetComponent<Destructible>();
-                if (destructible)
-                {
-                    destructible.OnDestructibleTriggerEnter.AddListener(OnDestructibleTriggered);
-                }
                 m_objectsOnPlanet.Add(go);
             }
         }
@@ -167,13 +169,13 @@ public class Planet : MonoBehaviour
                 m_objectsOnPlanet.Add(Instantiate(m_ShooterPrefab, transform.position + localPosition, rotation, m_PlanetAutoRotation));
             }
         }
-        if (m_TriggerEndPrefab != null)
-        {
-            Vector3 localPosition = new Vector3(0, Radius, 0);
-            Quaternion rotation = Quaternion.Euler(Random.Range(0.0f, 360.0f), Random.Range(0.0f, 360.0f), 0);
-            localPosition = rotation * localPosition;
-            m_objectsOnPlanet.Add(Instantiate(m_TriggerEndPrefab, transform.position + localPosition, rotation, m_PlanetAutoRotation));
-        }
+        //if (m_TriggerEndPrefab != null)
+        //{
+        //    Vector3 localPosition = new Vector3(0, Radius, 0);
+        //    Quaternion rotation = Quaternion.Euler(Random.Range(0.0f, 360.0f), Random.Range(0.0f, 360.0f), 0);
+        //    localPosition = rotation * localPosition;
+        //    m_objectsOnPlanet.Add(Instantiate(m_TriggerEndPrefab, transform.position + localPosition, rotation, m_PlanetAutoRotation));
+        //}
         if (m_SpeedPadPrefab != null)
         {
             for (int i = 0; i < m_SpeedPadCount; i++)
@@ -182,11 +184,17 @@ public class Planet : MonoBehaviour
                 Quaternion rotation = Quaternion.Euler(Random.Range(0.0f, 360.0f), Random.Range(0.0f, 360.0f), 0);
                 localPosition = rotation * localPosition;
                 GameObject go = Instantiate(m_SpeedPadPrefab, transform.position + localPosition, rotation, m_PlanetAutoRotation);
-                SpeedPad test = go.transform.GetChild(0).GetComponent<SpeedPad>();
-                if (test)
-                {
-                    test.OnBeginBoost.AddListener(OnBoostBegin);
-                }
+                m_objectsOnPlanet.Add(go);
+            }
+        }
+        if (m_ButterflyPrefab != null)
+        {
+            for (int i = 0; i < m_ButterflyCount; i++)
+            {
+                Vector3 localPosition = new Vector3(0, Radius, 0);
+                Quaternion rotation = Quaternion.Euler(Random.Range(0.0f, 360.0f), Random.Range(0.0f, 360.0f), 0);
+                localPosition = rotation * localPosition;
+                GameObject go = Instantiate(m_ButterflyPrefab, transform.position + localPosition, rotation, m_PlanetAutoRotation);
                 m_objectsOnPlanet.Add(go);
             }
         }
@@ -210,13 +218,17 @@ public class Planet : MonoBehaviour
 
     public void SetUpNextPlanet()
     {
-        m_Radius *= 0.8f;
-        ResetObjectsOnPlanet();
-        ScalePlanet();
-        InitObjectOnPlanet();
+        if (GameManager.instance.IsButterflyObjectiveDone())
+        {
+            m_Radius *= 0.8f;
+            m_ButterflyCount = 1;
+            ResetObjectsOnPlanet();
+            ScalePlanet();
+            InitObjectOnPlanet();
+        }
     }
 
-    void OnBoostBegin(float _SpeedMultiplier, float _BoostDuration)
+    public void OnBoostBegin(float _SpeedMultiplier, float _BoostDuration)
     {
         m_IsBoosting = true;
         m_SpeedMultiplier += _SpeedMultiplier;

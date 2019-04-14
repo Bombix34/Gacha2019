@@ -21,7 +21,7 @@ public class Butterfly : MonoBehaviour
     {
         Vector3 currentForward = transform.forward;
         transform.rotation = Quaternion.LookRotation(currentForward, transform.position.normalized);
-        
+
         Vector3 playerPosition = Player.Instance.transform.position;
         Vector3 wantedMovement = transform.position - playerPosition;
         if (wantedMovement.magnitude < m_FleeRange)
@@ -89,5 +89,15 @@ public class Butterfly : MonoBehaviour
             newDirection = leftDirection;
         }
         return newDirection;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Player player = other.GetComponent<Player>();
+        if (player)
+        {
+            Planet.instance.SetUpNextPlanet();
+            Destroy(gameObject);
+        }
     }
 }
