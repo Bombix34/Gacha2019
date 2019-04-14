@@ -6,14 +6,19 @@ public class Missile : MonoBehaviour
 {
     [SerializeField] private float m_Speed = 5;
     [SerializeField] private float m_LifeTime = 5;
+    //boost power multiply the speed of the missile
+    [SerializeField] private float m_BoostPower = 2f;
 
-    private float timer;
+    private float m_SpeedMultiplier = 1f;
+
+    private bool m_IsBoosting = false;
+
+    private float m_BoostTimer = 0f;
 
     private float m_RadiusPosition;
 
     private void Start()
     {
-        timer = m_LifeTime;
         m_RadiusPosition = transform.position.magnitude;
     }
 
@@ -23,16 +28,27 @@ public class Missile : MonoBehaviour
         Vector3 up = transform.position / radius;
 
         transform.LookAt(Player.Instance.transform);
-        transform.position += transform.forward * m_Speed * Time.deltaTime;
+        transform.position += transform.forward * m_SpeedMultiplier * m_Speed * Time.deltaTime;
 
         transform.position += up * (m_RadiusPosition - radius);
 
-        timer -= Time.deltaTime;
-
-        if (timer <= 0.0f)
+        m_LifeTime -= Time.deltaTime;
+        if (m_LifeTime <= 0.0f)
         {
             Destroy(gameObject);
         }
+
+        if (m_IsBoosting)
+        {
+            m_BoostTimer -= Time.deltaTime;
+
+            if (m_BoostTimer <= 0f)
+            {
+                m_IsBoosting = false;
+                m_SpeedMultiplier = 1f;
+            }
+        }
+
     }
 
     //private void SetPositionOnPlanet(float _Offset)
@@ -50,13 +66,21 @@ public class Missile : MonoBehaviour
 
     private void OnTriggerEnter(Collider _other)
     {
+
         Player player = _other.GetComponent<Player>();
 
         if (player)
         {
             Debug.Log("I hit you looser !");
+            Destroy(gameObject);
         }
 
-        Destroy(gameObject);
+        SpeedPad boost = _other.GetComponent<SpeedPad>();
+        if (boost)
+        {
+            m_IsBoosting = true;
+            m_SpeedMultiplier *= 2f;
+            m_BoostTimer = 1f;
+        }
     }
 }
