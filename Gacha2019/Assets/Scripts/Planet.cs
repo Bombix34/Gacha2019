@@ -2,16 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+class PlanetLayer
+{
+    public GameObject gameObject;
+    public float radius;
+}
+
 public class Planet : MonoBehaviour
 {
     [SerializeField]
     private float m_RotationSpeed = 10;
 
     [SerializeField]
-    private float m_Radius = 10;
-
-    [SerializeField]
-    private GameObject[] layers;
+    private PlanetLayer[] layers;
 
     [SerializeField]
     private float m_MovingSpeed = 0.5f;
@@ -32,8 +36,6 @@ public class Planet : MonoBehaviour
 
     private bool m_IsCursorPressed = false;
 
-    private List<GameObject> m_objectsOnPlanet;
-
     private float m_SpeedMultiplier = 1f;
 
     private float m_BoostDuration = 0f;
@@ -41,7 +43,7 @@ public class Planet : MonoBehaviour
     private float m_KnockBackPower = 0;
 
     private int currentLayerIndex;
-    private GameObject currentLayer;
+    private PlanetLayer currentLayer;
 
     private bool m_IsBoosting = false;
     public bool IsBoosting => m_IsBoosting;
@@ -63,7 +65,10 @@ public class Planet : MonoBehaviour
     {
         get
         {
-            return m_Radius;
+            if (currentLayer != null)
+                return currentLayer.radius;
+
+            return 1.0f;
         }
     }
 
@@ -73,11 +78,6 @@ public class Planet : MonoBehaviour
         {
             return m_RotationSpeed;
         }
-    }
-
-    private void Awake()
-    {
-        m_objectsOnPlanet = new List<GameObject>();
     }
 
     private void Start()
@@ -143,14 +143,19 @@ public class Planet : MonoBehaviour
     private bool SpawnNextLayer()
     {
         if (currentLayer != null)
-            Destroy(currentLayer);
+            Destroy(currentLayer.gameObject);
 
         if (currentLayerIndex < layers.Length)
         {
-            currentLayer = Instantiate(layers[currentLayerIndex], m_PlanetAutoRotation);
+            currentLayer = new PlanetLayer();
+            currentLayer.gameObject = Instantiate(layers[currentLayerIndex].gameObject, m_PlanetAutoRotation);
+            currentLayer.radius = layers[currentLayerIndex].radius;
+
             currentLayerIndex++;
+
             transform.rotation = Quaternion.identity;
             transform.GetChild(0).rotation = Quaternion.identity;
+
             return true;
         }
         else

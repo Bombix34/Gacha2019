@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.4507807, g: 0.4989527, b: 0.56531173, a: 1}
+  m_IndirectSpecularColor: {r: 0.45078105, g: 0.49895346, b: 0.56531274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -241,11 +241,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_RotationSpeed: 40
-  m_Radius: 10
   layers:
-  - {fileID: 6520062155740228382, guid: c7d3c9a88c0a5ac49a71ae5640b133de, type: 3}
-  - {fileID: 8053756946762994994, guid: f4a41befd54ad2c4fa494dfb2779f431, type: 3}
-  - {fileID: 4823015059942913928, guid: d99ff0639d4f7ba429df21853e873b1e, type: 3}
+  - gameObject: {fileID: 8053756946762994994, guid: f4a41befd54ad2c4fa494dfb2779f431,
+      type: 3}
+    radius: 10
+  - gameObject: {fileID: 4823015059942913928, guid: d99ff0639d4f7ba429df21853e873b1e,
+      type: 3}
+    radius: 7.5
   m_MovingSpeed: 1
   m_MaxMovingSpeed: 5
   m_PlanetAutoRotation: {fileID: 82193489}
@@ -886,6 +888,11 @@ PrefabInstance:
       propertyPath: m_ButterflyText
       value: 
       objectReference: {fileID: 1778934111}
+    - target: {fileID: 3077040250144649348, guid: c88da3f089aff4c75b302511d806f085,
+        type: 3}
+      propertyPath: m_ButterflyObjectiveCount.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c88da3f089aff4c75b302511d806f085, type: 3}
 --- !u!1001 &3219559317035939735
