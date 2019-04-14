@@ -50,6 +50,11 @@ public class PlanetEditor : MonoBehaviour
         m_Parent = SceneView.FindObjectOfType<Planet>().transform.GetChild(0);
     }
 
+    private void OnDisable()
+    {
+        SceneView.onSceneGUIDelegate -= OnScene;
+    }
+
 
     private void Awake()
     {

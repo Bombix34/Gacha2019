@@ -26,31 +26,44 @@ public class GameManager : MonoBehaviour
 
     //public GameObject gameoverPlaceholder;
 
+    private bool m_HasStarted = false;
+
 
     void Start()
     {
-
+        Time.timeScale = 0;
     }
 
     void Update()
     {
-        if (isGameOver)
+        if (!m_HasStarted)
         {
-            Restart();
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                m_HasStarted = true;
+                Time.timeScale = 1;
+            }
         }
         else
         {
-            if (m_TimeScaleDuration > 0f)
+            if (isGameOver)
             {
-                m_TimeScaleDuration -= Time.deltaTime;
-                Time.timeScale = 1f-(Mathf.Sin((Mathf.PI * m_TimeScaleDuration) / (m_TotalTimeScaleDuration)) * (1f - m_TargetTimeScale));
-                //Mathf.Lerp(1f, m_TargetTimeScale, 4f * (-Mathf.Pow(m_TimeScaleDuration, 2f) + m_TimeScaleDuration));
+                Restart();
             }
-            else if (Time.timeScale != 1f)
+            else
             {
-                Time.timeScale = 1f;
+                if (m_TimeScaleDuration > 0f)
+                {
+                    m_TimeScaleDuration -= Time.deltaTime;
+                    Time.timeScale = 1f - (Mathf.Sin((Mathf.PI * m_TimeScaleDuration) / (m_TotalTimeScaleDuration)) * (1f - m_TargetTimeScale));
+                    //Mathf.Lerp(1f, m_TargetTimeScale, 4f * (-Mathf.Pow(m_TimeScaleDuration, 2f) + m_TimeScaleDuration));
+                }
+                else if (Time.timeScale != 1f)
+                {
+                    Time.timeScale = 1f;
+                }
+                Time.fixedDeltaTime = 0.02F * Time.timeScale;
             }
-            Time.fixedDeltaTime = 0.02F * Time.timeScale;
         }
     }
 
