@@ -18,6 +18,10 @@ public class GameManager : MonoBehaviour
 
     bool isGameOver = false;
 
+    float m_TargetTimeScale = 1f;
+
+    float m_TimeScaleDuration = 0f;
+
     //public GameObject gameoverPlaceholder;
 
 
@@ -32,12 +36,25 @@ public class GameManager : MonoBehaviour
         {
             Restart();
         }
+        else
+        {
+            if (m_TimeScaleDuration > 0f)
+            {
+                m_TimeScaleDuration -= Time.deltaTime;
+                Time.timeScale = Mathf.Lerp(1f, m_TargetTimeScale, 4f * (-Mathf.Pow(m_TimeScaleDuration, 2f) + m_TimeScaleDuration));
+            }
+            else if (Time.timeScale != 1f)
+            {
+                Time.timeScale = 1f;
+            }
+            Time.fixedDeltaTime = 0.02F * Time.timeScale;
+        }
     }
 
     public bool IsButterflyObjectiveDone()
     {
         m_CurrentButterflyKilled++;
-        if(m_CurrentButterflyKilled >= m_ButterflyObjectiveCount[m_CurrentLayer])
+        if (m_CurrentButterflyKilled >= m_ButterflyObjectiveCount[m_CurrentLayer])
         {
             m_CurrentLayer++;
             m_CurrentButterflyKilled = 0;
@@ -62,6 +79,11 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
+    public void ChangeTimeScale(float _TimeScale, float _Duration)
+    {
+        m_TargetTimeScale = _TimeScale;
+        m_TimeScaleDuration = _Duration;
+    }
 
     //SINGLETON________________________________________________________________________________________________
     private static GameManager s_Instance = null;
