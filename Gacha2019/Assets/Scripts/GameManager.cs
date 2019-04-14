@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
     List<int> m_ButterflyObjectiveCount = null;
+
+    [SerializeField]
+    Text m_ButterflyText = null;
 
     int m_CurrentLayer = 0;
 
@@ -37,8 +41,10 @@ public class GameManager : MonoBehaviour
         {
             m_CurrentLayer++;
             m_CurrentButterflyKilled = 0;
+            m_ButterflyText.text = "Butterfly : " + m_CurrentButterflyKilled + " / " + m_ButterflyObjectiveCount[m_CurrentLayer];
             return true;
         }
+        m_ButterflyText.text = "Butterfly : " + m_CurrentButterflyKilled + " / " + m_ButterflyObjectiveCount[m_CurrentLayer];
         return false;
     }
 

@@ -51,7 +51,7 @@ MonoBehaviour:
   m_FleeRange: 5
   m_WanderAngle: 30
   m_WanderTimeBetweenDirectionChange: 0.5
-  m_Speed: 2
+  m_Speed: 10
 --- !u!65 &8268989496750486596
 BoxCollider:
   m_ObjectHideFlags: 0
