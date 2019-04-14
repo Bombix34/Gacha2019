@@ -96,7 +96,7 @@ public class Butterfly : MonoBehaviour
         Player player = other.GetComponent<Player>();
         if (player)
         {
-            Planet.instance.SetUpNextPlanet();
+            Planet.instance.OnFinishLayer();
             Destroy(gameObject);
         }
     }

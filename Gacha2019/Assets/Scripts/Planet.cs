@@ -11,55 +11,13 @@ public class Planet : MonoBehaviour
     private float m_Radius = 10;
 
     [SerializeField]
-    private int m_ObstacleCount = 40;
-
-    [SerializeField]
-    private int m_DestructibleCount = 15;
-
-    [SerializeField]
-    private int m_DestructibleStoneCount = 15;
-
-    [SerializeField]
-    private int m_ShooterCount = 5;
-
-    [SerializeField]
-    private int m_SpeedPadCount = 10;
-
-    [SerializeField]
-    private int m_ButterflyCount = 6;
+    private GameObject[] layers;
 
     [SerializeField]
     private float m_MovingSpeed = 0.5f;
 
     [SerializeField]
-    private Transform m_PlanetModel = null;
-
-    [SerializeField]
     private Transform m_PlanetAutoRotation = null;
-
-    [SerializeField]
-    private GameObject m_ObstaclePrefab = null;
-
-    [SerializeField]
-    private GameObject m_DestructiblePrefab = null;
-
-    [SerializeField]
-    private GameObject m_DestructibleStonePrefab = null;
-
-    [SerializeField]
-    private GameObject m_ShooterPrefab = null;
-
-    [SerializeField]
-    private GameObject m_TriggerEndPrefab = null;
-
-    [SerializeField]
-    private GameObject m_SpeedPadPrefab = null;
-
-    [SerializeField]
-    private GameObject m_ButterflyPrefab = null;
-
-    [SerializeField]
-    private bool auto = false;
 
     [SerializeField]
     private float m_KnockBackRecoverySpeed = 70;
@@ -76,17 +34,20 @@ public class Planet : MonoBehaviour
 
     private float m_KnockBackPower = 0;
 
+    private int currentLayerIndex;
+    private GameObject currentLayer;
+
     private bool m_IsBoosting = false;
     public bool IsBoosting => m_IsBoosting;
 
-    private int m_BoostStep = 0;
-
-    public int BoostStep
-    {
-        get
-        {
-            return m_BoostStep;
-        }
+    private int m_BoostStep = 0; 
+ 
+    public int BoostStep 
+    { 
+        get 
+        { 
+            return m_BoostStep; 
+        } 
     }
 
     public float Radius
@@ -112,11 +73,9 @@ public class Planet : MonoBehaviour
 
     private void Start()
     {
-        if (auto)
-        {
-            ScalePlanet();
-            InitObjectOnPlanet();
-        }
+        currentLayerIndex = 0;
+
+        SpawnNextLayer();
     }
 
     private void Update()
@@ -153,7 +112,7 @@ public class Planet : MonoBehaviour
                 if (m_BoostDuration <= 0f)
                 {
                     m_IsBoosting = false;
-                    m_BoostStep = 0;
+                    m_BoostStep = 0; 
                     m_SpeedMultiplier = 1f;
                 }
             }
@@ -162,113 +121,36 @@ public class Planet : MonoBehaviour
         {
             transform.Rotate(m_KnockBackPower * Time.deltaTime, 0, 0);
             m_KnockBackPower -= m_KnockBackRecoverySpeed * Time.deltaTime;
+
             m_IsBoosting = false;
-            m_BoostStep = 0;
+            m_BoostStep = 0; 
             m_SpeedMultiplier = 1f;
         }
     }
 
-    private void InitObjectOnPlanet()
+    private bool SpawnNextLayer()
     {
-        //PLACEMENT ALEATOIRE DES OBJETS
-        if (m_ObstaclePrefab != null)
+        if (currentLayer != null)
+            Destroy(currentLayer);
+
+        if (currentLayerIndex < layers.Length)
         {
-            for (int i = 0; i < m_ObstacleCount; i++)
-            {
-                Vector3 localPosition = new Vector3(0, Radius, 0);
-                Quaternion rotation = Quaternion.Euler(Random.Range(0.0f, 360.0f), Random.Range(0.0f, 360.0f), 0);
-                localPosition = rotation * localPosition;
-                m_objectsOnPlanet.Add(Instantiate(m_ObstaclePrefab, transform.position + localPosition, rotation, m_PlanetAutoRotation));
-            }
+            currentLayer = Instantiate(layers[currentLayerIndex], m_PlanetAutoRotation);
+            currentLayerIndex++;
+
+            return true;
         }
-        if (m_DestructiblePrefab != null)
+        else
         {
-            for (int i = 0; i < m_DestructibleCount; i++)
-            {
-                Vector3 localPosition = new Vector3(0, Radius, 0);
-                Quaternion rotation = Quaternion.Euler(Random.Range(0.0f, 360.0f), Random.Range(0.0f, 360.0f), 0);
-                localPosition = rotation * localPosition;
-                GameObject go = Instantiate(m_DestructiblePrefab, transform.position + localPosition, rotation, m_PlanetAutoRotation);
-                m_objectsOnPlanet.Add(go);
-            }
-        }
-        if (m_DestructibleStonePrefab != null)
-        {
-            for (int i = 0; i < m_DestructibleStoneCount; i++)
-            {
-                Vector3 localPosition = new Vector3(0, Radius, 0);
-                Quaternion rotation = Quaternion.Euler(Random.Range(0.0f, 360.0f), Random.Range(0.0f, 360.0f), 0);
-                localPosition = rotation * localPosition;
-                GameObject go = Instantiate(m_DestructibleStonePrefab, transform.position + localPosition, rotation, m_PlanetAutoRotation);
-                m_objectsOnPlanet.Add(go);
-            }
-        }
-        if (m_ShooterPrefab != null)
-        {
-            for (int i = 0; i < m_ShooterCount; i++)
-            {
-                Vector3 localPosition = new Vector3(0, Radius, 0);
-                Quaternion rotation = Quaternion.Euler(Random.Range(0.0f, 360.0f), Random.Range(0.0f, 360.0f), 0);
-                localPosition = rotation * localPosition;
-                m_objectsOnPlanet.Add(Instantiate(m_ShooterPrefab, transform.position + localPosition, rotation, m_PlanetAutoRotation));
-            }
-        }
-        //if (m_TriggerEndPrefab != null)
-        //{
-        //    Vector3 localPosition = new Vector3(0, Radius, 0);
-        //    Quaternion rotation = Quaternion.Euler(Random.Range(0.0f, 360.0f), Random.Range(0.0f, 360.0f), 0);
-        //    localPosition = rotation * localPosition;
-        //    m_objectsOnPlanet.Add(Instantiate(m_TriggerEndPrefab, transform.position + localPosition, rotation, m_PlanetAutoRotation));
-        //}
-        if (m_SpeedPadPrefab != null)
-        {
-            for (int i = 0; i < m_SpeedPadCount; i++)
-            {
-                Vector3 localPosition = new Vector3(0, Radius, 0);
-                Quaternion rotation = Quaternion.Euler(Random.Range(0.0f, 360.0f), Random.Range(0.0f, 360.0f), 0);
-                localPosition = rotation * localPosition;
-                GameObject go = Instantiate(m_SpeedPadPrefab, transform.position + localPosition, rotation, m_PlanetAutoRotation);
-                m_objectsOnPlanet.Add(go);
-            }
-        }
-        if (m_ButterflyPrefab != null)
-        {
-            for (int i = 0; i < m_ButterflyCount; i++)
-            {
-                Vector3 localPosition = new Vector3(0, Radius, 0);
-                Quaternion rotation = Quaternion.Euler(Random.Range(0.0f, 360.0f), Random.Range(0.0f, 360.0f), 0);
-                localPosition = rotation * localPosition;
-                GameObject go = Instantiate(m_ButterflyPrefab, transform.position + localPosition, rotation, m_PlanetAutoRotation);
-                m_objectsOnPlanet.Add(go);
-            }
+            return false;
         }
     }
 
-    public void ResetObjectsOnPlanet()
+    public void OnFinishLayer()
     {
-        foreach (GameObject obj in m_objectsOnPlanet)
+        if (GameManager.instance.IsButterflyObjectiveDone() && !SpawnNextLayer())
         {
-            Destroy(obj);
-        }
-    }
-
-    private void ScalePlanet()
-    {
-        if (m_PlanetModel != null)
-        {
-            m_PlanetModel.localScale = new Vector3(m_Radius * 2, m_Radius * 2, m_Radius * 2);
-        }
-    }
-
-    public void SetUpNextPlanet()
-    {
-        if (GameManager.instance.IsButterflyObjectiveDone())
-        {
-            m_Radius *= 0.8f;
-            m_ButterflyCount = 1;
-            ResetObjectsOnPlanet();
-            ScalePlanet();
-            InitObjectOnPlanet();
+            Debug.Log("FINISH !!!");
         }
     }
 
@@ -276,18 +158,10 @@ public class Planet : MonoBehaviour
     {
         if (m_KnockBackPower <= 0)
         {
-            m_BoostStep++;
+            m_BoostStep++; 
             m_IsBoosting = true;
             m_SpeedMultiplier += _SpeedMultiplier;
             m_BoostDuration = _BoostDuration;
-        }
-    }
-
-    void OnDestructibleTriggered(Destructible _Destructible)
-    {
-        if (m_IsBoosting)
-        {
-            Destroy(_Destructible.transform.parent.gameObject);
         }
     }
 
