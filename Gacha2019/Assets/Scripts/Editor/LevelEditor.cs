@@ -17,52 +17,41 @@ public class LevelEditor : EditorWindow
 
     }
 
+    private void Awake()
+    {
+        GetAssets();
+    }
+
     bool showInfo;
 
+
+    GameObject[] AllLevels;
+    GUIContent[] LevelsPreviews;
+    int SelectedLevelIndex;
+    int OldSelectedLevelIndex;
+
     GameObject[] AllPrefabs;
+    Texture[] Previews;
+    int selectedObjectIndex;
 
     GameObject selectedObject;
-    int selectedObjectIndex;
+    
     bool _editMode;
-    Texture[] Previews;
 
-    GameObject LevelSphere;
-
+    string MainPath = "Assets/Resources/Levels/";
 
     Vector2 scrollPos;
 
     PlanetEditor plEdit;
 
 
-    bool RotatingLevel;
-
-
-    float RotateSpeed;
 
     public void OnGUI()
     {
 
-        if (!plEdit)
-        {
+        PlanetEditorFinder();
 
-            plEdit = FindObjectOfType<PlanetEditor>();
-            if(!plEdit)
-            {
-                new GameObject("Planet Editor").AddComponent<PlanetEditor>();
-                plEdit = FindObjectOfType<PlanetEditor>();
-                //plEdit.gameObject.hideFlags = HideFlags.HideInHierarchy;
-            }
-                
-
-
-
-        }
-            
-
-
-       
-
-        scrollPos = GUILayout.BeginScrollView(scrollPos);
+          scrollPos = GUILayout.BeginScrollView(scrollPos);
 
         Instructions();
 
@@ -72,6 +61,9 @@ public class LevelEditor : EditorWindow
         {
             GetAssets();
         }
+
+
+        LevelsManaging();
 
 
         if (!_editMode)
@@ -86,6 +78,7 @@ public class LevelEditor : EditorWindow
             _editMode = !_editMode;
             plEdit.EditModeActive = _editMode;
         }
+        SaveLevel();
 
         GUI.color = Color.white;
 
@@ -96,6 +89,29 @@ public class LevelEditor : EditorWindow
         
     }
 
+
+    void PlanetEditorFinder()
+    {
+        if (!plEdit)
+        {
+
+            plEdit = FindObjectOfType<PlanetEditor>();
+            /*
+            if (!plEdit)
+            {
+                new GameObject("Planet Editor").AddComponent<PlanetEditor>();
+                plEdit = FindObjectOfType<PlanetEditor>();
+                plEdit.speed = 4.5f;
+                //plEdit.gameObject.hideFlags = HideFlags.HideInHierarchy;
+            }
+            */
+            plEdit.speed = 4.5f;
+
+
+        }
+
+
+    }
 
 
     void GetAssets()
@@ -110,6 +126,55 @@ public class LevelEditor : EditorWindow
             Previews[i] = AssetPreview.GetAssetPreview(AllPrefabs[i]);
         }
 
+        AllLevels = Resources.LoadAll<GameObject>("Levels");
+
+        LevelsPreviews = new GUIContent[AllLevels.Length];
+
+        for (int i = 0; i < AllLevels.Length; i++)
+        {
+            LevelsPreviews[i] = new GUIContent(AllLevels[i].name,AssetPreview.GetAssetPreview(AllLevels[i]));
+        }
+
+    }
+
+
+    void LevelsManaging()
+    {
+       if(GUILayout.Button("Add level"))
+        {
+            GameObject o = new GameObject();
+            CreateNew(o, MainPath + "Level" + (AllLevels.Length + 1) + ".prefab");
+            DestroyImmediate(o);
+        }
+
+
+
+
+        SelectedLevelIndex = GUILayout.SelectionGrid(SelectedLevelIndex, LevelsPreviews, 3);
+
+        if(SelectedLevelIndex != OldSelectedLevelIndex)
+        {
+            // Save le level actuel
+            CreateNew(plEdit.m_Parent.gameObject, MainPath + AllLevels[OldSelectedLevelIndex].name + ".prefab");
+
+            // Récup le parent
+            Transform tempParent = plEdit.m_Parent.parent;
+
+
+            // Remove le niveau actuel
+            DestroyImmediate(plEdit.m_Parent.gameObject);
+
+            //Instancie le nouveau niveau
+            plEdit.m_Parent = Instantiate(AllLevels[SelectedLevelIndex], tempParent).transform;
+
+            GetAssets();
+        }
+
+       
+
+
+        OldSelectedLevelIndex = SelectedLevelIndex;
+
     }
 
     void Instructions()
@@ -122,9 +187,13 @@ public class LevelEditor : EditorWindow
             GUILayout.Label("Vert Quand Actif");
             GUILayout.Label("Quand Actif, permet de placer objets");
             GUILayout.Label("et de drag dans le vide pour rotate");
+            GUILayout.Label("Save sauvegarde l'objet en prefab");
 
+            GUILayout.Space(5);
 
-            GUILayout.Space(25);
+            GUILayout.Label("Si jamais ca bug, relancer la fenetre");
+
+            GUILayout.Space(20);
 
 
         }
@@ -141,6 +210,21 @@ public class LevelEditor : EditorWindow
 
         if (plEdit)
             plEdit.prefab = selectedObject;
+    }
+
+
+    // Sauvegarde le niveau actuel
+    void SaveLevel()
+    {
+        GUI.color = Color.cyan;
+        if(GUILayout.Button("SAVE",GUILayout.Height(38)))
+        {
+            CreateNew(plEdit.m_Parent.gameObject, MainPath + AllLevels[SelectedLevelIndex].name + ".prefab");
+
+        }
+
+
+
     }
 
     // Window has been selected
@@ -170,6 +254,15 @@ public class LevelEditor : EditorWindow
 
         // Do your drawing here using GUI.
         Handles.EndGUI();
+    }
+
+    static void CreateNew(GameObject obj, string localPath)
+    {
+        //Create a new Prefab at the path given
+
+        
+        GameObject prefab = PrefabUtility.SaveAsPrefabAsset(obj,localPath);
+        //PrefabUtility.SaveAsPrefabAssetAndConnect(prefab, localPath,InteractionMode.UserAction);
     }
 
 

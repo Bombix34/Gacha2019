@@ -9,9 +9,12 @@ using UnityEditor;
 [ExecuteInEditMode]
 public class PlanetEditor : MonoBehaviour
 {
+    [HideInInspector]
     public GameObject prefab;
 
-    private Transform m_Parent;
+
+    [HideInInspector]
+    public Transform m_Parent;
     [HideInInspector]
     public bool EditModeActive;
     [HideInInspector]
@@ -31,15 +34,26 @@ public class PlanetEditor : MonoBehaviour
 
         SceneView.onSceneGUIDelegate += OnScene;
 
-        m_Parent = GameObject.Find("AutoRotation").transform;
+        m_Parent = SceneView.FindObjectOfType<Planet>().transform.GetChild(0);
     }
+
+
+    private void Awake()
+    {
+        m_Parent = SceneView.FindObjectOfType<Planet>().transform.GetChild(0);
+
+    }
+
+    
 
     void OnScene(SceneView scene)
     {
+
+
+
+        if (!m_Parent) m_Parent = SceneView.FindObjectOfType<Planet>().transform.GetChild(0);
+
         if (!EditModeActive) return;
-
-
-        if(!m_Parent) m_Parent = GameObject.Find("AutoRotation").transform;
 
         if (RotationActivated)
         { 
