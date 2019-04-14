@@ -20,6 +20,9 @@ public class Planet : MonoBehaviour
     private int m_ShooterCount = 5;
 
     [SerializeField]
+    private int m_SpeedPadCount = 10;
+
+    [SerializeField]
     private float m_MovingSpeed = 0.5f;
 
     [SerializeField]
@@ -41,6 +44,9 @@ public class Planet : MonoBehaviour
     private GameObject m_TriggerEndPrefab = null;
 
     [SerializeField]
+    private GameObject m_SpeedPadPrefab = null;
+
+    [SerializeField]
     private bool auto = false;
 
     private Vector3 m_LastMousePosition;
@@ -48,6 +54,12 @@ public class Planet : MonoBehaviour
     private bool m_IsCursorPressed = false;
 
     private List<GameObject> m_objectsOnPlanet;
+
+    private float m_SpeedMultiplier = 1f;
+
+    private float m_BoostDuration = 0f;
+
+    private bool m_IsBoosting = false;
 
     public float Radius
     {
@@ -103,7 +115,17 @@ public class Planet : MonoBehaviour
 
             m_LastMousePosition = currentMousePosition;
         }
-        transform.Rotate(-m_RotationSpeed * Time.deltaTime, 0, 0);
+        transform.Rotate(-m_RotationSpeed * m_SpeedMultiplier * Time.deltaTime, 0, 0);
+        //when player is boost
+        if (m_IsBoosting)
+        {
+            m_BoostDuration -= Time.deltaTime;
+            if (m_BoostDuration <= 0f)
+            {
+                m_IsBoosting = false;
+                m_SpeedMultiplier = 1f;
+            }
+        }
     }
 
     private void InitObjectOnPlanet()
@@ -126,7 +148,13 @@ public class Planet : MonoBehaviour
                 Vector3 localPosition = new Vector3(0, Radius, 0);
                 Quaternion rotation = Quaternion.Euler(Random.Range(0.0f, 360.0f), Random.Range(0.0f, 360.0f), 0);
                 localPosition = rotation * localPosition;
-                m_objectsOnPlanet.Add(Instantiate(m_DestructiblePrefab, transform.position + localPosition, rotation, m_PlanetAutoRotation));
+                GameObject go = Instantiate(m_DestructiblePrefab, transform.position + localPosition, rotation, m_PlanetAutoRotation);
+                Destructible destructible = go.transform.GetChild(0).GetComponent<Destructible>();
+                if (destructible)
+                {
+                    destructible.OnDestructibleTriggerEnter.AddListener(OnDestructibleTriggered);
+                }
+                m_objectsOnPlanet.Add(go);
             }
         }
         if (m_ShooterPrefab != null)
@@ -139,18 +167,34 @@ public class Planet : MonoBehaviour
                 m_objectsOnPlanet.Add(Instantiate(m_ShooterPrefab, transform.position + localPosition, rotation, m_PlanetAutoRotation));
             }
         }
-        if(m_TriggerEndPrefab != null)
+        if (m_TriggerEndPrefab != null)
         {
             Vector3 localPosition = new Vector3(0, Radius, 0);
             Quaternion rotation = Quaternion.Euler(Random.Range(0.0f, 360.0f), Random.Range(0.0f, 360.0f), 0);
             localPosition = rotation * localPosition;
             m_objectsOnPlanet.Add(Instantiate(m_TriggerEndPrefab, transform.position + localPosition, rotation, m_PlanetAutoRotation));
         }
+        if (m_SpeedPadPrefab != null)
+        {
+            for (int i = 0; i < m_SpeedPadCount; i++)
+            {
+                Vector3 localPosition = new Vector3(0, Radius, 0);
+                Quaternion rotation = Quaternion.Euler(Random.Range(0.0f, 360.0f), Random.Range(0.0f, 360.0f), 0);
+                localPosition = rotation * localPosition;
+                GameObject go = Instantiate(m_SpeedPadPrefab, transform.position + localPosition, rotation, m_PlanetAutoRotation);
+                SpeedPad test = go.transform.GetChild(0).GetComponent<SpeedPad>();
+                if (test)
+                {
+                    test.OnBeginBoost.AddListener(OnBoostBegin);
+                }
+                m_objectsOnPlanet.Add(go);
+            }
+        }
     }
 
     public void ResetObjectsOnPlanet()
     {
-        foreach(GameObject obj in m_objectsOnPlanet)
+        foreach (GameObject obj in m_objectsOnPlanet)
         {
             Destroy(obj);
         }
@@ -170,6 +214,21 @@ public class Planet : MonoBehaviour
         ResetObjectsOnPlanet();
         ScalePlanet();
         InitObjectOnPlanet();
+    }
+
+    void OnBoostBegin(float _SpeedMultiplier, float _BoostDuration)
+    {
+        m_IsBoosting = true;
+        m_SpeedMultiplier += _SpeedMultiplier;
+        m_BoostDuration = _BoostDuration;
+    }
+
+    void OnDestructibleTriggered(Destructible _Destructible)
+    {
+        if (m_IsBoosting)
+        {
+            Destroy(_Destructible.transform.parent.gameObject);
+        }
     }
 
     //SINGLETON________________________________________________________________________________________________

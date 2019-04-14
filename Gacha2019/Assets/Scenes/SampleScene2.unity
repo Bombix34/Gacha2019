@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -241,17 +241,21 @@ MonoBehaviour:
   m_ObstacleCount: 50
   m_DestructibleCount: 30
   m_ShooterCount: 5
+  m_SpeedPadCount: 10
   m_MovingSpeed: 1
   m_PlanetModel: {fileID: 1433251013}
   m_PlanetAutoRotation: {fileID: 82193489}
   m_ObstaclePrefab: {fileID: 1212949519796995349, guid: 56df719eada82fd47916006db2a35eb9,
     type: 3}
-  m_DestructiblePrefab: {fileID: 8391260634462876139, guid: 1e30d015fd0674a4c89ef22151d5805c,
+  m_DestructiblePrefab: {fileID: 8391260634462876139, guid: 61ad5823962227f49b65f282fd48b264,
     type: 3}
   m_ShooterPrefab: {fileID: 95285125588391590, guid: fe2116dca00034743861ee248c57a2ac,
     type: 3}
   m_TriggerEndPrefab: {fileID: 2253781944221876281, guid: e394eab6df4d4436c8e2889465ad5563,
     type: 3}
+  m_SpeedPadPrefab: {fileID: 2404365836097373513, guid: 5a80d892a383a9848801cdb285338b9d,
+    type: 3}
+  auto: 1
 --- !u!4 &163754182
 Transform:
   m_ObjectHideFlags: 0
@@ -367,12 +371,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8e1e6ca5bd1f79408851467dec7f696, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Planet: {fileID: 163754181}
-  m_OffsetRegeneration: 5
-  m_Missile: {fileID: 2852562355393972748, guid: 4a3dc5870edf24a4a9f0e5bd65332d8f,
-    type: 3}
   m_Speed: 0.3
-  m_SupposedPosition: {x: 0, y: 0, z: -20}
 --- !u!136 &375470724
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -791,12 +790,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8e1e6ca5bd1f79408851467dec7f696, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Planet: {fileID: 163754181}
-  m_OffsetRegeneration: 5
-  m_Missile: {fileID: 2852562355393972748, guid: 4a3dc5870edf24a4a9f0e5bd65332d8f,
-    type: 3}
   m_Speed: 0.3
-  m_SupposedPosition: {x: 0, y: 0, z: -20}
 --- !u!4 &833307313
 Transform:
   m_ObjectHideFlags: 0
@@ -876,6 +870,7 @@ MonoBehaviour:
   m_ObstacleCount: 50
   m_DestructibleCount: 30
   m_ShooterCount: 5
+  m_SpeedPadCount: 10
   m_MovingSpeed: 0.5
   m_PlanetModel: {fileID: 533995540}
   m_PlanetAutoRotation: {fileID: 155033132}
@@ -883,6 +878,8 @@ MonoBehaviour:
   m_DestructiblePrefab: {fileID: 0}
   m_ShooterPrefab: {fileID: 0}
   m_TriggerEndPrefab: {fileID: 0}
+  m_SpeedPadPrefab: {fileID: 0}
+  auto: 1
 --- !u!4 &890384026
 Transform:
   m_ObjectHideFlags: 0
