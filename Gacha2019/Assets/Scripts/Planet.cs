@@ -17,6 +17,9 @@ public class Planet : MonoBehaviour
     private float m_MovingSpeed = 0.5f;
 
     [SerializeField]
+    private float m_MaxMovingSpeed = 5f;
+
+    [SerializeField]
     private Transform m_PlanetAutoRotation = null;
 
     [SerializeField]
@@ -98,7 +101,16 @@ public class Planet : MonoBehaviour
             Vector3 newVector = currentMousePosition - middleOfScreen;
 
             float rotation = Vector3.SignedAngle(oldVector, newVector, Vector3.forward);
-            m_PlanetAutoRotation.Rotate(0, 0, rotation * m_MovingSpeed, Space.World);
+            float rotationToApply = rotation * m_MovingSpeed;
+            if (rotationToApply > m_MaxMovingSpeed)
+            {
+                rotationToApply = m_MaxMovingSpeed;
+            }
+            if (rotationToApply < -m_MaxMovingSpeed)
+            {
+                rotationToApply = -m_MaxMovingSpeed;
+            }
+            m_PlanetAutoRotation.Rotate(0, 0, rotationToApply, Space.World);
 
             m_LastMousePosition = currentMousePosition;
         }
