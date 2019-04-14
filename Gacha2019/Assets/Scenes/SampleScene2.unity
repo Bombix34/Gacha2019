@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -174,30 +174,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_RotationSpeed: 20
   m_Radius: 10
-  m_ObstacleCount: 50
-  m_DestructibleCount: 30
-  m_DestructibleStoneCount: 15
-  m_ShooterCount: 5
-  m_SpeedPadCount: 10
-  m_ButterflyCount: 6
+  layers: []
   m_MovingSpeed: 1
-  m_PlanetModel: {fileID: 1433251013}
+  m_MaxMovingSpeed: 5
   m_PlanetAutoRotation: {fileID: 82193489}
-  m_ObstaclePrefab: {fileID: 1212949519796995349, guid: 56df719eada82fd47916006db2a35eb9,
-    type: 3}
-  m_DestructiblePrefab: {fileID: 8391260634462876139, guid: 61ad5823962227f49b65f282fd48b264,
-    type: 3}
-  m_DestructibleStonePrefab: {fileID: 3025358793768948147, guid: 16c6b1565af5a894cbda02ac9bf298c6,
-    type: 3}
-  m_ShooterPrefab: {fileID: 95285125588391590, guid: fe2116dca00034743861ee248c57a2ac,
-    type: 3}
-  m_TriggerEndPrefab: {fileID: 2253781944221876281, guid: e394eab6df4d4436c8e2889465ad5563,
-    type: 3}
-  m_SpeedPadPrefab: {fileID: 2404365836097373513, guid: 5a80d892a383a9848801cdb285338b9d,
-    type: 3}
-  m_ButterflyPrefab: {fileID: 906238741314647221, guid: 69348574843832349b52e27d55bd6fef,
-    type: 3}
-  auto: 1
   m_KnockBackRecoverySpeed: 70
 --- !u!4 &163754182
 Transform:
@@ -340,112 +320,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &534669902
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 534669905}
-  - component: {fileID: 534669904}
-  - component: {fileID: 534669903}
-  - component: {fileID: 534669906}
-  - component: {fileID: 534669907}
-  m_Layer: 0
-  m_Name: Main Camera
-  m_TagString: MainCamera
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!81 &534669903
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 534669902}
-  m_Enabled: 1
---- !u!20 &534669904
-Camera:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 534669902}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
-  m_projectionMatrixMode: 1
-  m_SensorSize: {x: 36, y: 24}
-  m_LensShift: {x: 0, y: 0}
-  m_GateFitMode: 2
-  m_FocalLength: 50
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 60
-  orthographic: 1
-  orthographic size: 10
-  m_Depth: -1
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
-  m_TargetEye: 3
-  m_HDR: 1
-  m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
-  m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: 0.022
---- !u!4 &534669905
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 534669902}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -20}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!45 &534669906
-Skybox:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 534669902}
-  m_Enabled: 1
-  m_CustomSkybox: {fileID: 2100000, guid: d7885c5310d974b13a300311941ce6d8, type: 2}
---- !u!114 &534669907
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 534669902}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b6d4922ef83c4629a84ce0a1e961dd1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SkyboxSpeed: 1
 --- !u!1 &666008444
 GameObject:
   m_ObjectHideFlags: 0
@@ -521,23 +395,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_RotationSpeed: 50
   m_Radius: 0.05
-  m_ObstacleCount: 50
-  m_DestructibleCount: 30
-  m_DestructibleStoneCount: 15
-  m_ShooterCount: 5
-  m_SpeedPadCount: 10
-  m_ButterflyCount: 6
+  layers: []
   m_MovingSpeed: 0.5
-  m_PlanetModel: {fileID: 0}
+  m_MaxMovingSpeed: 5
   m_PlanetAutoRotation: {fileID: 0}
-  m_ObstaclePrefab: {fileID: 0}
-  m_DestructiblePrefab: {fileID: 0}
-  m_DestructibleStonePrefab: {fileID: 0}
-  m_ShooterPrefab: {fileID: 0}
-  m_TriggerEndPrefab: {fileID: 0}
-  m_SpeedPadPrefab: {fileID: 0}
-  m_ButterflyPrefab: {fileID: 0}
-  auto: 1
   m_KnockBackRecoverySpeed: 20
 --- !u!4 &890384026
 Transform:
@@ -704,6 +565,75 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1433251012}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &1524281851277888669
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1524281851447879379, guid: bf5c53f32655547b0a5d3c6ae0d9f29e,
+        type: 3}
+      propertyPath: m_Name
+      value: Main Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 1524281851447879372, guid: bf5c53f32655547b0a5d3c6ae0d9f29e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1524281851447879372, guid: bf5c53f32655547b0a5d3c6ae0d9f29e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1524281851447879372, guid: bf5c53f32655547b0a5d3c6ae0d9f29e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1524281851447879372, guid: bf5c53f32655547b0a5d3c6ae0d9f29e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1524281851447879372, guid: bf5c53f32655547b0a5d3c6ae0d9f29e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1524281851447879372, guid: bf5c53f32655547b0a5d3c6ae0d9f29e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1524281851447879372, guid: bf5c53f32655547b0a5d3c6ae0d9f29e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1524281851447879372, guid: bf5c53f32655547b0a5d3c6ae0d9f29e,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1524281851447879372, guid: bf5c53f32655547b0a5d3c6ae0d9f29e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1524281851447879372, guid: bf5c53f32655547b0a5d3c6ae0d9f29e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1524281851447879372, guid: bf5c53f32655547b0a5d3c6ae0d9f29e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bf5c53f32655547b0a5d3c6ae0d9f29e, type: 3}
 --- !u!1001 &8461423448379346809
 PrefabInstance:
   m_ObjectHideFlags: 0
