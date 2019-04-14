@@ -177,6 +177,7 @@ MonoBehaviour:
   - {fileID: 8053756946762994994, guid: f4a41befd54ad2c4fa494dfb2779f431, type: 3}
   - {fileID: 4823015059942913928, guid: d99ff0639d4f7ba429df21853e873b1e, type: 3}
   m_MovingSpeed: 1
+  m_MaxMovingSpeed: 5
   m_PlanetAutoRotation: {fileID: 82193489}
   m_KnockBackRecoverySpeed: 70
 --- !u!4 &163754182
@@ -449,7 +450,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 15
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
