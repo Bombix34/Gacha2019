@@ -8,19 +8,7 @@ public class Player : MonoBehaviour
     static public Player Instance { get { return instance; } }
     
     [SerializeField]
-    private Planet m_Planet;
-
-    [SerializeField]
-    private float m_OffsetRegeneration = 5.0f;
-
-    [SerializeField]
-    private GameObject m_Missile;
-    
-    [SerializeField]
-    private float m_Speed = 0.3f;
-
-    [SerializeField]
-    private Vector3 m_SupposedPosition = new Vector3(0, 0, -20);
+    private float m_Speed = 3;
 
     private Rigidbody m_Rigidbody;
 
@@ -44,17 +32,18 @@ public class Player : MonoBehaviour
     private void Update()
     {
         Vector3 position = transform.position;
-        position = position.normalized * Mathf.Abs(m_SupposedPosition.z * 0.5f);
+        position = position.normalized * Mathf.Abs(Planet.instance.Radius);
         transform.position = position;
     }
 
     private void FixedUpdate()
     {
-        Vector3 up = (transform.position - m_Planet.transform.position).normalized;
+        Vector3 up = (transform.position - Planet.instance.transform.position).normalized;
         transform.up = up;
         Physics.gravity = up * -9.81f;
 
-        Vector3 wantedMovement = m_SupposedPosition - transform.position;
+        Vector3 supposedPosition = new Vector3(0, 0, -Planet.instance.Radius);
+        Vector3 wantedMovement = supposedPosition - transform.position;
         float upMultiplier = Vector3.Dot(transform.up, wantedMovement);
         wantedMovement -= transform.up * upMultiplier;
         wantedMovement -= transform.up * 0.5f;
@@ -62,6 +51,7 @@ public class Player : MonoBehaviour
         {
             wantedMovement = wantedMovement.normalized * m_Speed;
         }
-        m_Rigidbody.AddForce(wantedMovement, ForceMode.Impulse);
+        Vector3 forceNeeded = wantedMovement - m_Rigidbody.velocity;
+        m_Rigidbody.AddForce(forceNeeded, ForceMode.Impulse);
     }
 }
