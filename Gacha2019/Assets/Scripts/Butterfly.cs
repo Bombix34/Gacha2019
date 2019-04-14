@@ -97,6 +97,7 @@ public class Butterfly : MonoBehaviour
         if (player)
         {
             Planet.instance.OnFinishLayer();
+            GameManager.instance.ChangeTimeScale(0.2f, 1f);
             Destroy(gameObject);
         }
     }

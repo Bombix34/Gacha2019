@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
 
     float m_TargetTimeScale = 1f;
 
+    float m_TotalTimeScaleDuration = 0f;
+
     float m_TimeScaleDuration = 0f;
 
     //public GameObject gameoverPlaceholder;
@@ -41,7 +43,9 @@ public class GameManager : MonoBehaviour
             if (m_TimeScaleDuration > 0f)
             {
                 m_TimeScaleDuration -= Time.deltaTime;
-                Time.timeScale = Mathf.Lerp(1f, m_TargetTimeScale, 4f * (-Mathf.Pow(m_TimeScaleDuration, 2f) + m_TimeScaleDuration));
+                Time.timeScale = 1f-(Mathf.Sin((Mathf.PI * m_TimeScaleDuration) / (m_TotalTimeScaleDuration)) * (1f - m_TargetTimeScale));
+                Debug.Log(Time.timeScale);
+                //Mathf.Lerp(1f, m_TargetTimeScale, 4f * (-Mathf.Pow(m_TimeScaleDuration, 2f) + m_TimeScaleDuration));
             }
             else if (Time.timeScale != 1f)
             {
@@ -83,6 +87,7 @@ public class GameManager : MonoBehaviour
     {
         m_TargetTimeScale = _TimeScale;
         m_TimeScaleDuration = _Duration;
+        m_TotalTimeScaleDuration = _Duration;
     }
 
     //SINGLETON________________________________________________________________________________________________
