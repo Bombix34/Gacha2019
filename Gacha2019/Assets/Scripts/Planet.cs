@@ -49,14 +49,14 @@ public class Planet : MonoBehaviour
     private int m_MobileCurrentFingerId;
     private int m_MobileLastTouchCount = 0;
 
-    private int m_BoostStep = 0; 
- 
-    public int BoostStep 
-    { 
-        get 
-        { 
-            return m_BoostStep; 
-        } 
+    private int m_BoostStep = 0;
+
+    public int BoostStep
+    {
+        get
+        {
+            return m_BoostStep;
+        }
     }
 
     public float Radius
@@ -111,7 +111,7 @@ public class Planet : MonoBehaviour
                     {
                         Player.Instance.transform.GetChild(1).GetComponent<Renderer>().material = m_PlayerMaterials[0];
                     }
-                    m_BoostStep = 0; 
+                    m_BoostStep = 0;
                     m_SpeedMultiplier = 1f;
                 }
             }
@@ -126,7 +126,7 @@ public class Planet : MonoBehaviour
             {
                 Player.Instance.transform.GetChild(1).GetComponent<Renderer>().material = m_PlayerMaterials[0];
             }
-            m_BoostStep = 0; 
+            m_BoostStep = 0;
             m_SpeedMultiplier = 1f;
         }
     }
@@ -140,7 +140,8 @@ public class Planet : MonoBehaviour
         {
             currentLayer = Instantiate(layers[currentLayerIndex], m_PlanetAutoRotation);
             currentLayerIndex++;
-
+            transform.rotation = Quaternion.identity;
+            transform.GetChild(0).rotation = Quaternion.identity;
             return true;
         }
         else
@@ -161,7 +162,7 @@ public class Planet : MonoBehaviour
     {
         if (m_KnockBackPower <= 0)
         {
-            m_BoostStep++; 
+            m_BoostStep++;
             m_IsBoosting = true;
             if (m_PlayerMaterials[1])
             {
@@ -265,8 +266,8 @@ public class Planet : MonoBehaviour
         {
             m_MobileLastTouchCount = 0;
         }
-        
-                
+
+
         if (m_MobileLastTouchCount > 0)
         {
             if (Input.touches[0].fingerId != m_MobileCurrentFingerId)
