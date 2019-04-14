@@ -11,10 +11,13 @@ public class Planet : MonoBehaviour
     private float m_Radius = 10;
 
     [SerializeField]
-    private int m_ObstacleCount = 50;
+    private int m_ObstacleCount = 40;
 
     [SerializeField]
-    private int m_DestructibleCount = 30;
+    private int m_DestructibleCount = 15;
+
+    [SerializeField]
+    private int m_DestructibleStoneCount = 15;
 
     [SerializeField]
     private int m_ShooterCount = 5;
@@ -41,6 +44,9 @@ public class Planet : MonoBehaviour
     private GameObject m_DestructiblePrefab = null;
 
     [SerializeField]
+    private GameObject m_DestructibleStonePrefab = null;
+
+    [SerializeField]
     private GameObject m_ShooterPrefab = null;
 
     [SerializeField]
@@ -55,6 +61,9 @@ public class Planet : MonoBehaviour
     [SerializeField]
     private bool auto = false;
 
+    [SerializeField]
+    private float m_KnockBackRecoverySpeed = 70;
+
     private Vector3 m_LastMousePosition;
 
     private bool m_IsCursorPressed = false;
@@ -65,8 +74,20 @@ public class Planet : MonoBehaviour
 
     private float m_BoostDuration = 0f;
 
+    private float m_KnockBackPower = 0;
+
     private bool m_IsBoosting = false;
     public bool IsBoosting => m_IsBoosting;
+
+    private int m_BoostStep = 0;
+
+    public int BoostStep
+    {
+        get
+        {
+            return m_BoostStep;
+        }
+    }
 
     public float Radius
     {
@@ -122,16 +143,28 @@ public class Planet : MonoBehaviour
 
             m_LastMousePosition = currentMousePosition;
         }
-        transform.Rotate(-m_RotationSpeed * m_SpeedMultiplier * Time.deltaTime, 0, 0);
-        //when player is boost
-        if (m_IsBoosting)
+        if (m_KnockBackPower <= 0)
         {
-            m_BoostDuration -= Time.deltaTime;
-            if (m_BoostDuration <= 0f)
+            transform.Rotate(-m_RotationSpeed * m_SpeedMultiplier * Time.deltaTime, 0, 0);
+            //when player is boost
+            if (m_IsBoosting)
             {
-                m_IsBoosting = false;
-                m_SpeedMultiplier = 1f;
+                m_BoostDuration -= Time.deltaTime;
+                if (m_BoostDuration <= 0f)
+                {
+                    m_IsBoosting = false;
+                    m_BoostStep = 0;
+                    m_SpeedMultiplier = 1f;
+                }
             }
+        }
+        else
+        {
+            transform.Rotate(m_KnockBackPower * Time.deltaTime, 0, 0);
+            m_KnockBackPower -= m_KnockBackRecoverySpeed * Time.deltaTime;
+            m_IsBoosting = false;
+            m_BoostStep = 0;
+            m_SpeedMultiplier = 1f;
         }
     }
 
@@ -156,6 +189,17 @@ public class Planet : MonoBehaviour
                 Quaternion rotation = Quaternion.Euler(Random.Range(0.0f, 360.0f), Random.Range(0.0f, 360.0f), 0);
                 localPosition = rotation * localPosition;
                 GameObject go = Instantiate(m_DestructiblePrefab, transform.position + localPosition, rotation, m_PlanetAutoRotation);
+                m_objectsOnPlanet.Add(go);
+            }
+        }
+        if (m_DestructibleStonePrefab != null)
+        {
+            for (int i = 0; i < m_DestructibleStoneCount; i++)
+            {
+                Vector3 localPosition = new Vector3(0, Radius, 0);
+                Quaternion rotation = Quaternion.Euler(Random.Range(0.0f, 360.0f), Random.Range(0.0f, 360.0f), 0);
+                localPosition = rotation * localPosition;
+                GameObject go = Instantiate(m_DestructibleStonePrefab, transform.position + localPosition, rotation, m_PlanetAutoRotation);
                 m_objectsOnPlanet.Add(go);
             }
         }
@@ -230,9 +274,13 @@ public class Planet : MonoBehaviour
 
     public void OnBoostBegin(float _SpeedMultiplier, float _BoostDuration)
     {
-        m_IsBoosting = true;
-        m_SpeedMultiplier += _SpeedMultiplier;
-        m_BoostDuration = _BoostDuration;
+        if (m_KnockBackPower <= 0)
+        {
+            m_BoostStep++;
+            m_IsBoosting = true;
+            m_SpeedMultiplier += _SpeedMultiplier;
+            m_BoostDuration = _BoostDuration;
+        }
     }
 
     void OnDestructibleTriggered(Destructible _Destructible)
@@ -271,4 +319,14 @@ public class Planet : MonoBehaviour
         }
     }
 
+
+    public void KnockBack(float _KnockBackPower)
+    {
+        if (m_IsBoosting)
+        {
+            m_KnockBackPower = _KnockBackPower;
+            m_IsBoosting = false;
+            m_SpeedMultiplier = 1f;
+        }
+    }
 }

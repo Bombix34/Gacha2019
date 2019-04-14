@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -176,6 +176,7 @@ MonoBehaviour:
   m_Radius: 10
   m_ObstacleCount: 50
   m_DestructibleCount: 30
+  m_DestructibleStoneCount: 15
   m_ShooterCount: 5
   m_SpeedPadCount: 10
   m_ButterflyCount: 6
@@ -186,6 +187,8 @@ MonoBehaviour:
     type: 3}
   m_DestructiblePrefab: {fileID: 8391260634462876139, guid: 61ad5823962227f49b65f282fd48b264,
     type: 3}
+  m_DestructibleStonePrefab: {fileID: 3025358793768948147, guid: 16c6b1565af5a894cbda02ac9bf298c6,
+    type: 3}
   m_ShooterPrefab: {fileID: 95285125588391590, guid: fe2116dca00034743861ee248c57a2ac,
     type: 3}
   m_TriggerEndPrefab: {fileID: 2253781944221876281, guid: e394eab6df4d4436c8e2889465ad5563,
@@ -195,6 +198,7 @@ MonoBehaviour:
   m_ButterflyPrefab: {fileID: 906238741314647221, guid: 69348574843832349b52e27d55bd6fef,
     type: 3}
   auto: 1
+  m_KnockBackRecoverySpeed: 70
 --- !u!4 &163754182
 Transform:
   m_ObjectHideFlags: 0
@@ -519,6 +523,7 @@ MonoBehaviour:
   m_Radius: 0.05
   m_ObstacleCount: 50
   m_DestructibleCount: 30
+  m_DestructibleStoneCount: 15
   m_ShooterCount: 5
   m_SpeedPadCount: 10
   m_ButterflyCount: 6
@@ -527,11 +532,13 @@ MonoBehaviour:
   m_PlanetAutoRotation: {fileID: 0}
   m_ObstaclePrefab: {fileID: 0}
   m_DestructiblePrefab: {fileID: 0}
+  m_DestructibleStonePrefab: {fileID: 0}
   m_ShooterPrefab: {fileID: 0}
   m_TriggerEndPrefab: {fileID: 0}
   m_SpeedPadPrefab: {fileID: 0}
   m_ButterflyPrefab: {fileID: 0}
   auto: 1
+  m_KnockBackRecoverySpeed: 20
 --- !u!4 &890384026
 Transform:
   m_ObjectHideFlags: 0
@@ -623,7 +630,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 5157d58f45ed91444bf3003b028e8f57, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -747,7 +754,7 @@ PrefabInstance:
     - target: {fileID: 8461423448008095228, guid: f68d82e1c9660408dae4c11c09791dd9,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8461423448008095228, guid: f68d82e1c9660408dae4c11c09791dd9,
         type: 3}
@@ -764,5 +771,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8461423447928856746, guid: f68d82e1c9660408dae4c11c09791dd9,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0a15ab1bd361d084ba3f9212114dc452, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f68d82e1c9660408dae4c11c09791dd9, type: 3}
