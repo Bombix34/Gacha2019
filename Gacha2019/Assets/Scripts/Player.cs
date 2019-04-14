@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
 
     private Rigidbody m_Rigidbody;
 
+    private float m_KnockBackDuration = 0;
+
     private void Awake()
     {
         if (instance == null)
@@ -41,17 +43,29 @@ public class Player : MonoBehaviour
         Vector3 up = (transform.position - Planet.instance.transform.position).normalized;
         transform.up = up;
         Physics.gravity = up * -9.81f;
-
-        Vector3 supposedPosition = new Vector3(0, 0, -Planet.instance.Radius);
-        Vector3 wantedMovement = supposedPosition - transform.position;
-        float upMultiplier = Vector3.Dot(transform.up, wantedMovement);
-        wantedMovement -= transform.up * upMultiplier;
-        wantedMovement -= transform.up * 0.5f;
-        if (wantedMovement.magnitude > m_Speed)
+        
+        if (m_KnockBackDuration > 0)
         {
-            wantedMovement = wantedMovement.normalized * m_Speed;
+            m_KnockBackDuration -= Time.deltaTime;
         }
-        Vector3 forceNeeded = wantedMovement - m_Rigidbody.velocity;
-        m_Rigidbody.AddForce(forceNeeded, ForceMode.Impulse);
+        else
+        {
+            Vector3 supposedPosition = new Vector3(0, 0, -Planet.instance.Radius);
+            Vector3 wantedMovement = supposedPosition - transform.position;
+            float upMultiplier = Vector3.Dot(transform.up, wantedMovement);
+            wantedMovement -= transform.up * upMultiplier;
+            wantedMovement -= transform.up * 0.5f;
+            if (wantedMovement.magnitude > m_Speed)
+            {
+                wantedMovement = wantedMovement.normalized * m_Speed;
+            }
+            Vector3 forceNeeded = wantedMovement - m_Rigidbody.velocity;
+            m_Rigidbody.AddForce(forceNeeded, ForceMode.Impulse);
+        }
+    }
+
+    public void KnockBack(float _KnockBackDuration)
+    {
+        m_KnockBackDuration = _KnockBackDuration;
     }
 }

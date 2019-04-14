@@ -5,12 +5,23 @@ using UnityEngine.Events;
 
 public class Destructible : MonoBehaviour
 {
+    [SerializeField]
+    private bool m_CanBeDestroyed = true;
+
     private void OnCollisionEnter(Collision other)
     {
         Player player = other.transform.GetComponent<Player>();
         if (player && Planet.instance.IsBoosting)
         {
-            Destroy(gameObject);
+            if (m_CanBeDestroyed)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                Planet.instance.KnockBack(30);
+                player.KnockBack(0.5f);
+            }
         }
     }
 }
