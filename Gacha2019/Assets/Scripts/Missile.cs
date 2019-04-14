@@ -17,6 +17,14 @@ public class Missile : MonoBehaviour
 
     private float m_RadiusPosition;
 
+    public bool IsBoosting
+    {
+        get
+        {
+            return m_IsBoosting;
+        }
+    }
+
     private void Start()
     {
         m_RadiusPosition = transform.position.magnitude;

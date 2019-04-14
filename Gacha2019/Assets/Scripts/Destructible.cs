@@ -6,17 +6,23 @@ using UnityEngine.Events;
 public class Destructible : MonoBehaviour
 {
     [SerializeField]
-    private bool m_CanBeDestroyed = true;
+    private bool m_CanBeDestroyedByPlayer = true;
 
     [SerializeField]
     private int m_BoostSpeedStepNeeded = 1;
+
+    [SerealizeField]
+    private bool m_CanBeDestroyedByMissile = false;
+
+    [SerializeField]
+    private bool m_MissileNeedsToBoostToDestroy = false;
 
     private void OnCollisionEnter(Collision other)
     {
         Player player = other.transform.GetComponent<Player>();
         if (player && Planet.instance.IsBoosting)
         {
-            if (m_CanBeDestroyed)
+            if (m_CanBeDestroyedByPlayer)
             {
                 if (Planet.instance.BoostStep >= m_BoostSpeedStepNeeded)
                 {
@@ -32,6 +38,27 @@ public class Destructible : MonoBehaviour
             {
                 Planet.instance.KnockBack(30);
                 player.KnockBack(0.5f);
+            }
+        }
+
+        Missile missile = other.transform.GetComponent<Missile>();
+        if(missile)
+        {
+            if(m_CanBeDestroyedByMissile)
+            {
+                if(m_MissileNeedsToBoostToDestroy)
+                {
+                    if(missile.IsBoosting)
+                    {
+                        Destroy(missile.gameObject);
+                        Destroy(gameObject);
+                    }
+                }
+                else
+                {
+                    Destroy(missile.gameObject);
+                    Destroy(gameObject);
+                }
             }
         }
     }
