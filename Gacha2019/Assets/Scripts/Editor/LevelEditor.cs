@@ -165,7 +165,10 @@ public class LevelEditor : EditorWindow
             DestroyImmediate(plEdit.m_Parent.gameObject);
 
             //Instancie le nouveau niveau
-            plEdit.m_Parent = Instantiate(AllLevels[SelectedLevelIndex], tempParent).transform;
+
+            GameObject g = (GameObject)PrefabUtility.InstantiatePrefab(AllLevels[SelectedLevelIndex], tempParent);
+            plEdit.m_Parent = g.transform;
+            g.transform.localPosition = Vector3.zero;
 
             GetAssets();
         }
@@ -261,8 +264,13 @@ public class LevelEditor : EditorWindow
         //Create a new Prefab at the path given
 
         
-        GameObject prefab = PrefabUtility.SaveAsPrefabAsset(obj,localPath);
-        //PrefabUtility.SaveAsPrefabAssetAndConnect(prefab, localPath,InteractionMode.UserAction);
+        //GameObject prefab = PrefabUtility.SaveAsPrefabAsset(obj,localPath);
+        PrefabUtility.SaveAsPrefabAssetAndConnect(obj, localPath,InteractionMode.UserAction);
+    }
+
+    private void Update()
+    {
+        plEdit.m_Parent = FindObjectOfType<Planet>().transform.GetChild(0);
     }
 
 

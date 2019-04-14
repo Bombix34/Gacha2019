@@ -85,7 +85,9 @@ public class PlanetEditor : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit))
             {
-                GameObject go = Instantiate(prefab, m_Parent);
+                //GameObject go = Instantiate(prefab, m_Parent);
+
+                GameObject go = (GameObject)PrefabUtility.InstantiatePrefab(prefab, m_Parent);
                 Undo.RegisterCreatedObjectUndo(go, "Created go");
 
                 go.transform.localScale = Vector3.one;
@@ -105,7 +107,39 @@ public class PlanetEditor : MonoBehaviour
             RotationActivated = false;
 
         }
-        
+
+        if (e.type == EventType.MouseDown && e.button == 1)
+        {
+
+
+            Vector3 mousePos = e.mousePosition;
+            float ppp = EditorGUIUtility.pixelsPerPoint;
+            mousePos.y = scene.camera.pixelHeight - mousePos.y * ppp;
+            mousePos.x *= ppp;
+
+
+
+            RaycastHit hit;
+            Ray ray = scene.camera.ScreenPointToRay(mousePos);
+
+            if (Physics.Raycast(ray, out hit))
+            {
+                Debug.Log("HIT" + hit.transform.name);
+
+                //GameObject go = Instantiate(prefab, m_Parent);
+                /*
+                GameObject go = (GameObject)PrefabUtility.InstantiatePrefab(prefab, m_Parent);
+                Undo.RegisterCreatedObjectUndo(go, "Created go");
+
+                go.transform.localScale = Vector3.one;
+                go.transform.position = hit.point;
+                go.transform.up = go.transform.position.normalized;*/
+            }
+           
+
+            e.Use();
+        }
+
     }
 }
 
