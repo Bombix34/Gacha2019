@@ -17,9 +17,6 @@ public class Butterfly : MonoBehaviour
     [SerializeField]
     private float m_Speed = 0.5f;
 
-    [SerializeField]
-    private float m_PlanetRadius = 10;
-
     private void Update()
     {
         Vector3 currentForward = transform.forward;
@@ -50,13 +47,13 @@ public class Butterfly : MonoBehaviour
         }
 
         Vector3 target = transform.position + wantedMovement;
-        target = target.normalized * m_PlanetRadius;
+        target = target.normalized * Planet.instance.Radius;
         wantedMovement = target - transform.position;
         wantedMovement = CollisionAvoidance(wantedMovement);
 
 
         Vector3 position = transform.position + wantedMovement.normalized * m_Speed * Time.deltaTime;
-        position = position.normalized * m_PlanetRadius;
+        position = position.normalized * Planet.instance.Radius;
         transform.position = position;
         transform.rotation = Quaternion.LookRotation(wantedMovement.normalized, transform.position.normalized);
     }
