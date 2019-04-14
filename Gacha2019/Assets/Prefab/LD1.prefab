@@ -135,8 +135,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c58082c25a089c43a876e5125199f1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_CanBeDestroyed: 1
+  m_CanBeDestroyedByPlayer: 1
   m_BoostSpeedStepNeeded: 1
+  m_CanBeDestroyedByMissile: 0
+  m_MissileNeedsToBoostToDestroy: 0
 --- !u!1 &8053756945851688343
 GameObject:
   m_ObjectHideFlags: 0
@@ -241,8 +243,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c58082c25a089c43a876e5125199f1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_CanBeDestroyed: 1
+  m_CanBeDestroyedByPlayer: 1
   m_BoostSpeedStepNeeded: 1
+  m_CanBeDestroyedByMissile: 0
+  m_MissileNeedsToBoostToDestroy: 0
 --- !u!1 &8053756945878960068
 GameObject:
   m_ObjectHideFlags: 0
@@ -378,8 +382,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c58082c25a089c43a876e5125199f1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_CanBeDestroyed: 1
+  m_CanBeDestroyedByPlayer: 1
   m_BoostSpeedStepNeeded: 1
+  m_CanBeDestroyedByMissile: 0
+  m_MissileNeedsToBoostToDestroy: 0
 --- !u!1 &8053756945898798314
 GameObject:
   m_ObjectHideFlags: 0
@@ -546,8 +552,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c58082c25a089c43a876e5125199f1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_CanBeDestroyed: 1
+  m_CanBeDestroyedByPlayer: 1
   m_BoostSpeedStepNeeded: 1
+  m_CanBeDestroyedByMissile: 0
+  m_MissileNeedsToBoostToDestroy: 0
 --- !u!1 &8053756945960400997
 GameObject:
   m_ObjectHideFlags: 0
@@ -714,8 +722,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c58082c25a089c43a876e5125199f1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_CanBeDestroyed: 1
+  m_CanBeDestroyedByPlayer: 1
   m_BoostSpeedStepNeeded: 1
+  m_CanBeDestroyedByMissile: 0
+  m_MissileNeedsToBoostToDestroy: 0
 --- !u!1 &8053756946025545912
 GameObject:
   m_ObjectHideFlags: 0
@@ -882,8 +892,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c58082c25a089c43a876e5125199f1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_CanBeDestroyed: 1
+  m_CanBeDestroyedByPlayer: 1
   m_BoostSpeedStepNeeded: 1
+  m_CanBeDestroyedByMissile: 0
+  m_MissileNeedsToBoostToDestroy: 0
 --- !u!1 &8053756946255903838
 GameObject:
   m_ObjectHideFlags: 0
@@ -988,8 +1000,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c58082c25a089c43a876e5125199f1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_CanBeDestroyed: 1
+  m_CanBeDestroyedByPlayer: 1
   m_BoostSpeedStepNeeded: 1
+  m_CanBeDestroyedByMissile: 0
+  m_MissileNeedsToBoostToDestroy: 0
 --- !u!1 &8053756946381661912
 GameObject:
   m_ObjectHideFlags: 0
@@ -1094,8 +1108,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c58082c25a089c43a876e5125199f1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_CanBeDestroyed: 1
+  m_CanBeDestroyedByPlayer: 1
   m_BoostSpeedStepNeeded: 1
+  m_CanBeDestroyedByMissile: 0
+  m_MissileNeedsToBoostToDestroy: 0
 --- !u!1 &8053756946426747137
 GameObject:
   m_ObjectHideFlags: 0
@@ -1348,8 +1364,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c58082c25a089c43a876e5125199f1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_CanBeDestroyed: 1
+  m_CanBeDestroyedByPlayer: 1
   m_BoostSpeedStepNeeded: 1
+  m_CanBeDestroyedByMissile: 0
+  m_MissileNeedsToBoostToDestroy: 0
 --- !u!1 &8053756946839417239
 GameObject:
   m_ObjectHideFlags: 0
@@ -1454,8 +1472,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c58082c25a089c43a876e5125199f1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_CanBeDestroyed: 1
+  m_CanBeDestroyedByPlayer: 1
   m_BoostSpeedStepNeeded: 1
+  m_CanBeDestroyedByMissile: 0
+  m_MissileNeedsToBoostToDestroy: 0
 --- !u!1 &8053756946859243162
 GameObject:
   m_ObjectHideFlags: 0
@@ -1591,8 +1611,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c58082c25a089c43a876e5125199f1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_CanBeDestroyed: 1
+  m_CanBeDestroyedByPlayer: 1
   m_BoostSpeedStepNeeded: 1
+  m_CanBeDestroyedByMissile: 0
+  m_MissileNeedsToBoostToDestroy: 0
 --- !u!1 &8053756946890541973
 GameObject:
   m_ObjectHideFlags: 0
@@ -1728,8 +1750,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c58082c25a089c43a876e5125199f1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_CanBeDestroyed: 1
+  m_CanBeDestroyedByPlayer: 1
   m_BoostSpeedStepNeeded: 1
+  m_CanBeDestroyedByMissile: 0
+  m_MissileNeedsToBoostToDestroy: 0
 --- !u!1 &8053756946954168352
 GameObject:
   m_ObjectHideFlags: 0
@@ -1834,8 +1858,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c58082c25a089c43a876e5125199f1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_CanBeDestroyed: 1
+  m_CanBeDestroyedByPlayer: 1
   m_BoostSpeedStepNeeded: 1
+  m_CanBeDestroyedByMissile: 0
+  m_MissileNeedsToBoostToDestroy: 0
 --- !u!1 &8053756947031893259
 GameObject:
   m_ObjectHideFlags: 0
@@ -1940,8 +1966,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c58082c25a089c43a876e5125199f1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_CanBeDestroyed: 1
+  m_CanBeDestroyedByPlayer: 1
   m_BoostSpeedStepNeeded: 1
+  m_CanBeDestroyedByMissile: 0
+  m_MissileNeedsToBoostToDestroy: 0
 --- !u!1 &8053756947077698636
 GameObject:
   m_ObjectHideFlags: 0
@@ -2077,8 +2105,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c58082c25a089c43a876e5125199f1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_CanBeDestroyed: 1
+  m_CanBeDestroyedByPlayer: 1
   m_BoostSpeedStepNeeded: 1
+  m_CanBeDestroyedByMissile: 0
+  m_MissileNeedsToBoostToDestroy: 0
 --- !u!1 &8053756947301212026
 GameObject:
   m_ObjectHideFlags: 0
@@ -2183,8 +2213,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c58082c25a089c43a876e5125199f1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_CanBeDestroyed: 1
+  m_CanBeDestroyedByPlayer: 1
   m_BoostSpeedStepNeeded: 1
+  m_CanBeDestroyedByMissile: 0
+  m_MissileNeedsToBoostToDestroy: 0
 --- !u!1 &8053756947336786421
 GameObject:
   m_ObjectHideFlags: 0
@@ -2225,7 +2257,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8053756947336786421}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300000, guid: 837852b236399fe48901eb0e80006036, type: 3}
 --- !u!23 &8053756947336786422
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2442,8 +2474,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c58082c25a089c43a876e5125199f1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_CanBeDestroyed: 1
+  m_CanBeDestroyedByPlayer: 1
   m_BoostSpeedStepNeeded: 1
+  m_CanBeDestroyedByMissile: 0
+  m_MissileNeedsToBoostToDestroy: 0
 --- !u!1 &8053756947450138929
 GameObject:
   m_ObjectHideFlags: 0
@@ -2548,8 +2582,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c58082c25a089c43a876e5125199f1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_CanBeDestroyed: 1
+  m_CanBeDestroyedByPlayer: 1
   m_BoostSpeedStepNeeded: 1
+  m_CanBeDestroyedByMissile: 0
+  m_MissileNeedsToBoostToDestroy: 0
 --- !u!1 &8053756947506083342
 GameObject:
   m_ObjectHideFlags: 0
@@ -2685,8 +2721,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c58082c25a089c43a876e5125199f1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_CanBeDestroyed: 1
+  m_CanBeDestroyedByPlayer: 1
   m_BoostSpeedStepNeeded: 1
+  m_CanBeDestroyedByMissile: 0
+  m_MissileNeedsToBoostToDestroy: 0
 --- !u!1 &8053756947565662012
 GameObject:
   m_ObjectHideFlags: 0
@@ -2791,8 +2829,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c58082c25a089c43a876e5125199f1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_CanBeDestroyed: 1
+  m_CanBeDestroyedByPlayer: 1
   m_BoostSpeedStepNeeded: 1
+  m_CanBeDestroyedByMissile: 0
+  m_MissileNeedsToBoostToDestroy: 0
 --- !u!1 &8053756947664166463
 GameObject:
   m_ObjectHideFlags: 0
