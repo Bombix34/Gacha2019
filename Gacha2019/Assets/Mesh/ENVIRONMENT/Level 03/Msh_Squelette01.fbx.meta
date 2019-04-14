@@ -1,28 +1,16 @@
 fileFormatVersion: 2
-guid: ab1d2afa6b79d804faca73fd4298379c
+guid: 8730fab460bb94516b4d6779c24317f6
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: Msh_Arbre01
+    100000: Msh_Squelette01
     100002: //RootNode
-    100004: Msh_Feuillage_coeur01
-    100006: Msh_Fruits_Coeur
-    100008: Gpe_Arbre01
-    400000: Msh_Arbre01
+    400000: Msh_Squelette01
     400002: //RootNode
-    400004: Msh_Feuillage_coeur01
-    400006: Msh_Fruits_Coeur
-    400008: Gpe_Arbre01
     2100000: lambert1
-    2300000: Msh_Arbre01
-    2300002: Msh_Feuillage_coeur01
-    2300004: Msh_Fruits_Coeur
-    3300000: Msh_Arbre01
-    3300002: Msh_Feuillage_coeur01
-    3300004: Msh_Fruits_Coeur
-    4300000: Msh_Arbre01
-    4300002: Msh_Feuillage_coeur01
-    4300004: Msh_Fruits_Coeur
+    2300000: Msh_Squelette01
+    3300000: Msh_Squelette01
+    4300000: Msh_Squelette01
   externalObjects: {}
   materials:
     importMaterials: 1

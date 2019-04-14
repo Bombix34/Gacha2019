@@ -1,23 +1,16 @@
 fileFormatVersion: 2
-guid: 9dc3f7e2cc80ee84b9637b981ee213ab
+guid: 6141055407ee944479f9083add15f38e
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: Msh_Arbre04
+    100000: Msh_Os01
     100002: //RootNode
-    100004: Msh_Feuillage04
-    100006: Gpe_Arbre04
-    400000: Msh_Arbre04
+    400000: Msh_Os01
     400002: //RootNode
-    400004: Msh_Feuillage04
-    400006: Gpe_Arbre04
     2100000: lambert1
-    2300000: Msh_Arbre04
-    2300002: Msh_Feuillage04
-    3300000: Msh_Arbre04
-    3300002: Msh_Feuillage04
-    4300000: Msh_Feuillage04
-    4300002: Msh_Arbre04
+    2300000: Msh_Os01
+    3300000: Msh_Os01
+    4300000: Msh_Os01
   externalObjects: {}
   materials:
     importMaterials: 1
