@@ -4,20 +4,21 @@
 //http://docs.unity3d.com/Manual/SL-VertexProgramInputs.html
 
 
-Shader "Custom/SurfaceShader"
+Shader "Custom/CartoonShader"
 {
 	Properties
 	{
+		_Color ("Color", Color) = (1, 1, 1, 1)
 		_MainTex ("Diffuse", 2D) = "white" {}
 		_AmbientOcclusion ("Ambient Occlusion", 2D) = "white" {}
 		_NormalMap ("Normal map", 2D) = "bump" {} //couleur "bump" par défaut
-		_SpecularMap ("Specular map", 2D) = "white" {}
-		_GlossMap ("Gloss map", 2D) = "white" {}
-		
-		_SpecularFactor ("Specular Factor", float) = 500
-		_GlossFactor ("Gloss Factor", float) = 10
+		//_SpecularMap ("Specular map", 2D) = "white" {}
+		//_GlossMap ("Gloss map", 2D) = "white" {}
+		//
+		//_SpecularFactor ("Specular Factor", float) = 500
+		//_GlossFactor ("Gloss Factor", float) = 10
 	}
-	
+
 	Category
 	{
 		SubShader
@@ -28,15 +29,16 @@ Shader "Custom/SurfaceShader"
 			#pragma surface surf Cartoon 
 			#pragma target 3.0
 
-			
+			float4 _Color;
+
 			sampler2D _MainTex;
 			sampler2D _AmbientOcclusion;
 			sampler2D _NormalMap;
-			sampler2D _SpecularMap;
-			sampler2D _GlossMap;
-			
-			float _SpecularFactor;
-			float _GlossFactor;
+			//sampler2D _SpecularMap;
+			//sampler2D _GlossMap;
+			//
+			//float _SpecularFactor;
+			//float _GlossFactor;
 			
 			
 			//Structure d'entrée/sortie du surface shader.
@@ -58,12 +60,13 @@ Shader "Custom/SurfaceShader"
 			void surf (Input i, inout SurfaceOutput o) 
 			{
 				o.Albedo = tex2D(_MainTex, i.uv_MainTex.xy)
-				* tex2D(_AmbientOcclusion, i.uv_MainTex.xy);
+				* tex2D(_AmbientOcclusion, i.uv_MainTex.xy)
+				* _Color;
 				
 				o.Normal = UnpackNormal(tex2D(_NormalMap, i.uv_MainTex.xy));
 				
-				o.Specular = tex2D(_SpecularMap, i.uv_MainTex.xy) * _SpecularFactor;
-				o.Gloss = tex2D(_GlossMap, i.uv_MainTex.xy) * _GlossFactor;
+				//o.Specular = tex2D(_SpecularMap, i.uv_MainTex.xy) * _SpecularFactor;
+				//o.Gloss = tex2D(_GlossMap, i.uv_MainTex.xy) * _GlossFactor;
 			}
 			
 			//Fonction d'éclairage custom, qui sera lancée pour chaque lumière et gère le spéculaire.
@@ -76,17 +79,15 @@ Shader "Custom/SurfaceShader"
 
 				//c.rgb = (s.Albedo * _LightColor0.rgb * diff +  _LightColor0.rgb*spec) * (atten * 2);
 
-				half4 c;
+				half4 color;
 
-				float dotValue = dot(s.Normal, normalize(lightDir));
-
-				float light = dotValue > 0.0f ? 1.0f : 0.0f;
+				float light = dot(s.Normal, normalize(lightDir)) > 0.0f ? 1.0f : 0.0f;
 				float lightCast = atten > 0.1f ? 1.0f : 0.0f;
 
-				c.rgb = s.Albedo * _LightColor0.rgb * light * lightCast;
-				c.a = s.Alpha;
+				color.rgb = s.Albedo * _LightColor0.rgb * light * lightCast;
+				color.a = s.Alpha;
 		
-				return c;
+				return color;
 			}
 			
 			ENDCG
