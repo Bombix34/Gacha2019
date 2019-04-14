@@ -107,6 +107,10 @@ public class Planet : MonoBehaviour
                 if (m_BoostDuration <= 0f)
                 {
                     m_IsBoosting = false;
+                    if (m_PlayerMaterials[0])
+                    {
+                        Player.Instance.transform.GetChild(1).GetComponent<Renderer>().material = m_PlayerMaterials[0];
+                    }
                     m_BoostStep = 0; 
                     m_SpeedMultiplier = 1f;
                 }
@@ -118,6 +122,10 @@ public class Planet : MonoBehaviour
             m_KnockBackPower -= m_KnockBackRecoverySpeed * Time.deltaTime;
 
             m_IsBoosting = false;
+            if (m_PlayerMaterials[0])
+            {
+                Player.Instance.transform.GetChild(1).GetComponent<Renderer>().material = m_PlayerMaterials[0];
+            }
             m_BoostStep = 0; 
             m_SpeedMultiplier = 1f;
         }
@@ -155,7 +163,10 @@ public class Planet : MonoBehaviour
         {
             m_BoostStep++; 
             m_IsBoosting = true;
-            Player.Instance.transform.GetChild(1).GetComponent<Renderer>().material = m_PlayerMaterials[1];
+            if (m_PlayerMaterials[1])
+            {
+                Player.Instance.transform.GetChild(1).GetComponent<Renderer>().material = m_PlayerMaterials[1];
+            }
             m_SpeedMultiplier += _SpeedMultiplier;
             m_BoostDuration = _BoostDuration;
         }
@@ -196,7 +207,10 @@ public class Planet : MonoBehaviour
         {
             m_KnockBackPower = _KnockBackPower;
             m_IsBoosting = false;
-            Player.Instance.transform.GetChild(1).GetComponent<Renderer>().material = m_PlayerMaterials[0];
+            if (m_PlayerMaterials[0])
+            {
+                Player.Instance.transform.GetChild(1).GetComponent<Renderer>().material = m_PlayerMaterials[0];
+            }
             m_SpeedMultiplier = 1f;
         }
     }
