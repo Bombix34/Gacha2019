@@ -1326,8 +1326,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootSound: {fileID: 0}
   filetSound: {fileID: 11400000, guid: 46be0b96f678743469dd4e6df50ce3fa, type: 2}
-  catchButterfly: {fileID: 0}
-  ligneFullSound: {fileID: 0}
+  catchButterfly: {fileID: 11400000, guid: d5ebdd0735b964402984356f5e1794ef, type: 2}
+  destructionHouse: {fileID: 11400000, guid: a2179b5880a8d47e8b7e7e72e4318a60, type: 2}
+  endLevel: {fileID: 11400000, guid: c1c3a47b8db1f40d5841658844904323, type: 2}
   audiosources:
   - {fileID: 220308041513734663}
   - {fileID: 220308042784138305}

@@ -8,6 +8,7 @@ public class SoundManager : MonoBehaviour {
     public PitchVolumeAudio filetSound; //1
     public PitchVolumeAudio catchButterfly; //2
     public PitchVolumeAudio destructionHouse; //3
+    public PitchVolumeAudio endLevel; //4
 
 	
 	public AudioSource[] audiosources; 
@@ -33,6 +34,9 @@ public class SoundManager : MonoBehaviour {
                 break;
             case 3:
                 GetAudioSourceAvailable(destructionHouse);
+                break;
+            case 4:
+                GetAudioSourceAvailable(endLevel);
                 break;
         }
     }

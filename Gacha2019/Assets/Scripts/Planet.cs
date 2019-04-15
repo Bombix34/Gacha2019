@@ -159,6 +159,7 @@ public class Planet : MonoBehaviour
 
         if (currentLayerIndex < layers.Length)
         {
+            SoundManager.instance.PlaySound(4);
             currentLayer = new PlanetLayer();
             currentLayer.gameObject = Instantiate(layers[currentLayerIndex].gameObject, m_PlanetAutoRotation);
             currentLayer.radius = layers[currentLayerIndex].radius;
@@ -167,6 +168,7 @@ public class Planet : MonoBehaviour
 
             transform.rotation = Quaternion.identity;
             transform.GetChild(0).rotation = Quaternion.identity;
+            MusicManager.instance.NextMusic();
 
             return true;
         }
@@ -180,6 +182,7 @@ public class Planet : MonoBehaviour
     {
         if (GameManager.instance.IsButterflyObjectiveDone() && !SpawnNextLayer())
         {
+
             Debug.Log("FINISH !!!");
         }
     }

@@ -8,21 +8,21 @@ public class SimpleMusic : AudioEvent {
 	private int index;
 
 	public override void Play(AudioSource source){
-		source.clip = clips[Random.Range(0,clips.Length)];
+		source.clip = clips[0];
 		source.loop=loop;
 		source.Play();
 	}
 	public void PlayNext(AudioSource source){
 		index = index < clips.Length-1?index+1:0;
 		source.clip = clips[index];
-		source.loop=false;
+		source.loop=true;
 		source.Play();
 	}
 
 	public IEnumerator StartMusic(AudioSource source){
 		this.isPlaying = true;
 		index = -1;
-		ArrayExtension.Shuffle(this.clips);//On randomize les music
+		//ArrayExtension.Shuffle(this.clips);//On randomize les music
         while (true) {
 			if(this.isPlaying && !source.isPlaying)
             	PlayNext(source);
