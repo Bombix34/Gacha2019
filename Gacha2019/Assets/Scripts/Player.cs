@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
 
     private Material[] baseMats;
 
-
+    PlayerMoveParticle m_Particles;
 
     private void Awake()
     {
@@ -37,6 +37,7 @@ public class Player : MonoBehaviour
         m_Rigidbody = GetComponent<Rigidbody>();
         m_Animator = GetComponentInChildren<Animator>();
         baseMats = GetComponentInChildren<SkinnedMeshRenderer>().materials;
+        m_Particles = GetComponent<PlayerMoveParticle>();
     }
 
     private void Update()
@@ -103,11 +104,13 @@ public class Player : MonoBehaviour
     public void LaunchGame()
     {
         m_Animator.SetTrigger("Go");
+        m_Particles.LaunchParticles(true);
     }
 
     public void SetIsBoosting(bool _Value)
     {
         m_Animator.SetBool("IsBoosting", _Value);
+        m_Particles.LaunchParticles(!_Value);
     }
 
 }
