@@ -97,8 +97,8 @@ public class Butterfly : MonoBehaviour
         if (player)
         {
             Planet.instance.OnFinishLayer();
-            player.SetIsCapturingButterfly(true);
-            GameManager.instance.ChangeTimeScale(0.2f, 0.5f);
+            Player.Instance.LaunchCatchAnim();
+           // GameManager.instance.ChangeTimeScale(0.2f, 0.5f);
             Destroy(gameObject);
         }
     }

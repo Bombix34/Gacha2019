@@ -18,6 +18,8 @@ public class Player : MonoBehaviour
 
     private Material[] baseMats;
 
+
+
     private void Awake()
     {
         if (instance == null)
@@ -85,13 +87,27 @@ public class Player : MonoBehaviour
         return m_Animator;
     }
 
+    public void LaunchCatchAnim()
+    {
+        StartCoroutine(CatchAnim());
+    }
+
+    IEnumerator CatchAnim()
+    {
+        Planet.instance.SpeedMultiplier = 0f;
+        m_Animator.SetTrigger("Catch");
+        yield return new WaitForSeconds(0.8f);
+        Planet.instance.SpeedMultiplier = 1f;
+    }
+
+    public void LaunchGame()
+    {
+        m_Animator.SetTrigger("Go");
+    }
+
     public void SetIsBoosting(bool _Value)
     {
         m_Animator.SetBool("IsBoosting", _Value);
     }
 
-    public void SetIsCapturingButterfly(bool _Value)
-    {
-        m_Animator.SetBool("CapturingButterfly", _Value);
-    }
 }
