@@ -18,6 +18,8 @@ public class Player : MonoBehaviour
 
     private Material[] baseMats;
 
+    PlayerMoveParticle m_Particles;
+
     private void Awake()
     {
         if (instance == null)
@@ -35,6 +37,7 @@ public class Player : MonoBehaviour
         m_Rigidbody = GetComponent<Rigidbody>();
         m_Animator = GetComponentInChildren<Animator>();
         baseMats = GetComponentInChildren<SkinnedMeshRenderer>().materials;
+        m_Particles = GetComponent<PlayerMoveParticle>();
     }
 
     private void Update()
@@ -85,13 +88,29 @@ public class Player : MonoBehaviour
         return m_Animator;
     }
 
+    public void LaunchCatchAnim()
+    {
+        StartCoroutine(CatchAnim());
+    }
+
+    IEnumerator CatchAnim()
+    {
+        Planet.instance.SpeedMultiplier = 0f;
+        m_Animator.SetTrigger("Catch");
+        yield return new WaitForSeconds(0.8f);
+        Planet.instance.SpeedMultiplier = 1f;
+    }
+
+    public void LaunchGame()
+    {
+        m_Animator.SetTrigger("Go");
+        m_Particles.LaunchParticles(true);
+    }
+
     public void SetIsBoosting(bool _Value)
     {
         m_Animator.SetBool("IsBoosting", _Value);
+        m_Particles.LaunchParticles(!_Value);
     }
 
-    public void SetIsCapturingButterfly(bool _Value)
-    {
-        m_Animator.SetBool("CapturingButterfly", _Value);
-    }
 }

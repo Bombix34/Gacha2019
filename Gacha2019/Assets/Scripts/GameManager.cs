@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 m_HasStarted = true;
+                Player.Instance.LaunchGame();
                 Time.timeScale = 1;
             }
         }

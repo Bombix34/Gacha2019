@@ -80,6 +80,18 @@ public class Planet : MonoBehaviour
         }
     }
 
+    public float SpeedMultiplier
+    {
+        get
+        {
+            return m_SpeedMultiplier;
+        }
+        set
+        {
+            m_SpeedMultiplier = value;
+        }
+    }
+
     private void Start()
     {
         currentLayerIndex = 0;
@@ -178,10 +190,6 @@ public class Planet : MonoBehaviour
         {
             m_BoostStep++;
             m_IsBoosting = true;
-            if (m_PlayerMaterials[1])
-            {
-              //  Player.Instance.transform.GetChild(1).GetComponent<Renderer>().material = m_PlayerMaterials[1];
-            }
             Player.Instance.SetIsBoosting(true);
             m_SpeedMultiplier += _SpeedMultiplier;
             m_BoostDuration = _BoostDuration;

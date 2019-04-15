@@ -13,6 +13,8 @@ public class DestructibleHouse : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
         anim.transform.gameObject.SetActive(false);
         mesh = GetComponentInChildren<MeshRenderer>();
+        if (!mesh)
+            mesh = GetComponent<MeshRenderer>();
     }
 
     public void Explode()
