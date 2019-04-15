@@ -15,6 +15,9 @@ public class Cloud : MonoBehaviour
 
     float radius=11;
 
+    [SerializeField]
+    Sprite evilSprite;
+
     void Start()
     {
         rotationSpeed = Random.Range(8f, 20f);
@@ -98,5 +101,11 @@ public class Cloud : MonoBehaviour
             }
             randChrono = Random.Range(1f, 3f);
         }
+    }
+
+    public void SetEvilSprite()
+    {
+        if(evilSprite!=null)
+            GetComponent<SpriteRenderer>().sprite = evilSprite;
     }
 }
