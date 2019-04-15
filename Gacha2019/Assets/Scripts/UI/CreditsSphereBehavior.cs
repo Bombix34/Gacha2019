@@ -15,4 +15,9 @@ public class CreditsSphereBehavior : MonoBehaviour
     {
         transform.Rotate(Vector3.forward, -0.75f, Space.World);
     }
+
+    void OnEnable()
+    {
+        transform.eulerAngles = new Vector3(90f, 180f, 0f);
+    }
 }
