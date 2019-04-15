@@ -5,8 +5,9 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour {
 
 	public PitchVolumeAudio shootSound; //0
-
-	public AudioClip ligneFullSound; //5
+    public PitchVolumeAudio filetSound; //1
+    public PitchVolumeAudio catchButterfly; //2
+    public PitchVolumeAudio destructionHouse; //3
 
 	
 	public AudioSource[] audiosources; 
@@ -17,17 +18,25 @@ public class SoundManager : MonoBehaviour {
 		}
 	}
 
-/*	public void PlaySound(int sound){
-		switch(sound){
+	public void PlaySound(int sound)
+    {
+		switch(sound)
+        {
 			case 0:
 				GetAudioSourceAvailable(shootSound);
 				break;
 			case 1:
-				GetAudioSourceAvailable(dashSound);
+				GetAudioSourceAvailable(filetSound);
 				break;
-		}
-}
-*/
+            case 2:
+                GetAudioSourceAvailable(catchButterfly);
+                break;
+            case 3:
+                GetAudioSourceAvailable(destructionHouse);
+                break;
+        }
+    }
+
 
 	public void GetAudioSourceAvailable(AudioClip clip){
 		for(int i =0 ; i < audiosources.Length;i++){

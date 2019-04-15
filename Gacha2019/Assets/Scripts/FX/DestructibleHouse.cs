@@ -20,6 +20,7 @@ public class DestructibleHouse : MonoBehaviour
     public void Explode()
     {
         BoxCollider[] collid = GetComponents<BoxCollider>();
+        SoundManager.instance.PlaySound(3);
         foreach(BoxCollider col in collid)
         {
             col.enabled = false;
