@@ -298,7 +298,7 @@ public class LevelEditor : EditorWindow
 
         
         //GameObject prefab = PrefabUtility.SaveAsPrefabAsset(obj,localPath);
-        PrefabUtility.SaveAsPrefabAssetAndConnect(obj, localPath,InteractionMode.UserAction);
+        //PrefabUtility.SaveAsPrefabAssetAndConnect(obj, localPath,InteractionMode.UserAction);
     }
 
     private void Update()

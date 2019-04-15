@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc38003c0e0db6641a4762d4f392de52, type: 3}
+  m_Name: Default
+  m_EditorClassIdentifier: 
+  prefabs:
+  - gameObject: {fileID: 100000, guid: da48b2f875e401546b821b4167552705, type: 3}
+    settings:
+      rotationRange: {x: 0, y: 0}
+      scaleRange: {x: 0, y: 0}
+  - gameObject: {fileID: 100002, guid: da48b2f875e401546b821b4167552705, type: 3}
+    settings:
+      rotationRange: {x: 0, y: 0}
+      scaleRange: {x: 0, y: 0}
+  - gameObject: {fileID: 100004, guid: da48b2f875e401546b821b4167552705, type: 3}
+    settings:
+      rotationRange: {x: 0, y: 0}
+      scaleRange: {x: 0, y: 0}
+  - gameObject: {fileID: 100006, guid: da48b2f875e401546b821b4167552705, type: 3}
+    settings:
+      rotationRange: {x: 0, y: 0}
+      scaleRange: {x: 0, y: 0}
+  - gameObject: {fileID: 100008, guid: da48b2f875e401546b821b4167552705, type: 3}
+    settings:
+      rotationRange: {x: 0, y: 0}
+      scaleRange: {x: 0, y: 0}
+  - gameObject: {fileID: 100010, guid: da48b2f875e401546b821b4167552705, type: 3}
+    settings:
+      rotationRange: {x: 0, y: 0}
+      scaleRange: {x: 0, y: 0}
+  - gameObject: {fileID: 100012, guid: da48b2f875e401546b821b4167552705, type: 3}
+    settings:
+      rotationRange: {x: 0, y: 0}
+      scaleRange: {x: 0, y: 0}
+  - gameObject: {fileID: 7532066812760742318, guid: 5accf8fe35ed842468947f77e7a5a647,
+      type: 3}
+    settings:
+      rotationRange: {x: 0, y: 0}
+      scaleRange: {x: 0, y: 0}
+  - gameObject: {fileID: 100000, guid: a29558d47bac2c24a9ac9157e6de0e9e, type: 3}
+    settings:
+      rotationRange: {x: 0, y: 0}
+      scaleRange: {x: 0, y: 0}
+  - gameObject: {fileID: 3697743245972049627, guid: e722a2823d84d41e3aebb049303ef3d7,
+      type: 3}
+    settings:
+      rotationRange: {x: 0, y: 0}
+      scaleRange: {x: 0, y: 0}
+  - gameObject: {fileID: 100000, guid: d1e8e3daf07e37046b3ff391b5f6eec3, type: 3}
+    settings:
+      rotationRange: {x: 0, y: 0}
+      scaleRange: {x: 0, y: 0}
+  - gameObject: {fileID: 1374695109585512056, guid: 682c1ce9b9fe74bb2be699fdde935e0a,
+      type: 3}
+    settings:
+      rotationRange: {x: 0, y: 0}
+      scaleRange: {x: 0, y: 0}
+  - gameObject: {fileID: 100000, guid: 7fb066428a0ead6439b02f8fc847a7af, type: 3}
+    settings:
+      rotationRange: {x: 0, y: 0}
+      scaleRange: {x: 0, y: 0}
+  - gameObject: {fileID: 100000, guid: 72b528cbc5624f742b2475e45a6a73bf, type: 3}
+    settings:
+      rotationRange: {x: 0, y: 0}
+      scaleRange: {x: 0, y: 0}
+  - gameObject: {fileID: 100000, guid: 350ac1f27d29fc847a221afd2674bd23, type: 3}
+    settings:
+      rotationRange: {x: 0, y: 0}
+      scaleRange: {x: 0, y: 0}
