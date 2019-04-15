@@ -59,6 +59,7 @@ public class Shooter : MonoBehaviour
 
     void Fire()
     {
+        SoundManager.instance.PlaySound(5);
         Vector3 lookVector = Player.Instance.transform.position - ShootPostion;
         Quaternion lookQuaternion = Quaternion.LookRotation(lookVector.normalized, transform.up);
 

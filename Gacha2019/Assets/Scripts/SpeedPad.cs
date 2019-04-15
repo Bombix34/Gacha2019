@@ -27,6 +27,7 @@ public class SpeedPad : MonoBehaviour
         Player player = other.GetComponent<Player>();
         if (player)
         {
+            SoundManager.instance.PlaySound(7);
             Planet.instance.OnBoostBegin(m_SpeedMultiplier, m_BoostDurationInSeconds);
         }
     }

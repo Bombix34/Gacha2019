@@ -9,6 +9,10 @@ public class SoundManager : MonoBehaviour {
     public PitchVolumeAudio catchButterfly; //2
     public PitchVolumeAudio destructionHouse; //3
     public PitchVolumeAudio endLevel; //4
+    public PitchVolumeAudio rocketLaunch; //5
+    public PitchVolumeAudio rocketExplosion; //6
+    public PitchVolumeAudio speedBoostSound; //7
+
 
 	
 	public AudioSource[] audiosources; 
@@ -37,6 +41,15 @@ public class SoundManager : MonoBehaviour {
                 break;
             case 4:
                 GetAudioSourceAvailable(endLevel);
+                break;
+            case 5:
+                GetAudioSourceAvailable(rocketLaunch);
+                break;
+            case 6:
+                GetAudioSourceAvailable(rocketExplosion);
+                break;
+            case 7:
+                GetAudioSourceAvailable(speedBoostSound);
                 break;
         }
     }

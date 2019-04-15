@@ -117,6 +117,7 @@ public class Missile : MonoBehaviour
         if (player != null)
         {
             Debug.Log("I hit you looser !");
+            SoundManager.instance.PlaySound(6);
             Destroy(gameObject);
         }
 

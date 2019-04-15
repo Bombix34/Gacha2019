@@ -1329,6 +1329,9 @@ MonoBehaviour:
   catchButterfly: {fileID: 11400000, guid: d5ebdd0735b964402984356f5e1794ef, type: 2}
   destructionHouse: {fileID: 11400000, guid: a2179b5880a8d47e8b7e7e72e4318a60, type: 2}
   endLevel: {fileID: 11400000, guid: c1c3a47b8db1f40d5841658844904323, type: 2}
+  rocketLaunch: {fileID: 11400000, guid: 14a2386ac8d134c77b54f3ed0f1c2419, type: 2}
+  rocketExplosion: {fileID: 11400000, guid: 9b3ca48edf0f84d849f2244c6a857f96, type: 2}
+  speedBoostSound: {fileID: 11400000, guid: d584fcd3dce264042a8e0de5f5f17250, type: 2}
   audiosources:
   - {fileID: 220308041513734663}
   - {fileID: 220308042784138305}
