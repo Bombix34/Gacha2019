@@ -113,7 +113,7 @@ public class PlanetEditor : MonoBehaviour
                     GameObject go = (GameObject)PrefabUtility.InstantiatePrefab(prefab, m_Parent);
                     Undo.RegisterCreatedObjectUndo(go, "Created go");
 
-                    go.transform.localScale = Vector3.one;
+                    //go.transform.localScale = Vector3.one;
                     go.transform.position = hit.point;
                     go.transform.up = go.transform.position.normalized;
                 }
@@ -222,7 +222,7 @@ public class PlanetEditor : MonoBehaviour
 
 
 
-            go.transform.localScale = Vector3.one;
+            //go.transform.localScale = Vector3.one;
             
             go.transform.up = go.transform.position.normalized;
 

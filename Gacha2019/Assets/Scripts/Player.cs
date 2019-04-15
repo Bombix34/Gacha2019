@@ -112,5 +112,4 @@ public class Player : MonoBehaviour
         m_Animator.SetBool("IsBoosting", _Value);
         m_Particles.LaunchParticles(!_Value);
     }
-
 }
