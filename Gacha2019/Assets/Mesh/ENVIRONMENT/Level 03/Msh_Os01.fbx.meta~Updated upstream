@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: aa794e90ce9a2374fb5717dcbd7c9de3
+guid: 6141055407ee944479f9083add15f38e
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: Msh_Squelette01
+    100000: Msh_Os01
     100002: //RootNode
-    400000: Msh_Squelette01
+    400000: Msh_Os01
     400002: //RootNode
     2100000: lambert1
-    2300000: Msh_Squelette01
-    3300000: Msh_Squelette01
-    4300000: Msh_Squelette01
+    2300000: Msh_Os01
+    3300000: Msh_Os01
+    4300000: Msh_Os01
   externalObjects: {}
   materials:
     importMaterials: 1

@@ -1,16 +1,72 @@
 fileFormatVersion: 2
-guid: aa794e90ce9a2374fb5717dcbd7c9de3
+guid: 130787b848e408a45b9abd6f5288aa7d
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: Msh_Squelette01
-    100002: //RootNode
-    400000: Msh_Squelette01
-    400002: //RootNode
+    100000: //RootNode
+    100002: pCube76
+    100004: pCube77
+    100006: pCube78
+    100008: pCube79
+    100010: pCylinder35
+    100012: pCylinder36
+    100014: pCylinder37
+    100016: pCylinder38
+    100018: pCylinder39
+    100020: pCylinder40
+    100022: pCylinder41
+    100024: pCylinder42
+    100026: pCylinder43
+    100028: pCylinder44
+    100030: pCylinder45
+    100032: transform43
+    100034: transform44
+    100036: transform45
+    100038: transform46
+    100040: transform47
+    100042: transform48
+    100044: transform49
+    100046: transform50
+    100048: transform51
+    100050: transform52
+    100052: transform53
+    100054: transform54
+    100056: transform55
+    100058: transform56
+    400000: //RootNode
+    400002: pCube76
+    400004: pCube77
+    400006: pCube78
+    400008: pCube79
+    400010: pCylinder35
+    400012: pCylinder36
+    400014: pCylinder37
+    400016: pCylinder38
+    400018: pCylinder39
+    400020: pCylinder40
+    400022: pCylinder41
+    400024: pCylinder42
+    400026: pCylinder43
+    400028: pCylinder44
+    400030: pCylinder45
+    400032: transform43
+    400034: transform44
+    400036: transform45
+    400038: transform46
+    400040: transform47
+    400042: transform48
+    400044: transform49
+    400046: transform50
+    400048: transform51
+    400050: transform52
+    400052: transform53
+    400054: transform54
+    400056: transform55
+    400058: transform56
     2100000: lambert1
-    2300000: Msh_Squelette01
-    3300000: Msh_Squelette01
-    4300000: Msh_Squelette01
+    2300000: pCylinder45
+    3300000: pCylinder45
+    4300000: pCylinder45
   externalObjects: {}
   materials:
     importMaterials: 1

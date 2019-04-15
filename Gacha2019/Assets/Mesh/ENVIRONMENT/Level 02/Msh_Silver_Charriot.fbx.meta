@@ -1,16 +1,26 @@
 fileFormatVersion: 2
-guid: aa794e90ce9a2374fb5717dcbd7c9de3
+guid: 397652e5aa902e14488f8eb2eb50e9cc
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: Msh_Squelette01
-    100002: //RootNode
-    400000: Msh_Squelette01
-    400002: //RootNode
+    100000: //RootNode
+    100002: pCube90
+    100004: pCylinder54
+    100006: pCylinder55
+    400000: //RootNode
+    400002: pCube90
+    400004: pCylinder54
+    400006: pCylinder55
     2100000: lambert1
-    2300000: Msh_Squelette01
-    3300000: Msh_Squelette01
-    4300000: Msh_Squelette01
+    2300000: pCube90
+    2300002: pCylinder54
+    2300004: pCylinder55
+    3300000: pCube90
+    3300002: pCylinder54
+    3300004: pCylinder55
+    4300000: pCylinder55
+    4300002: pCylinder54
+    4300004: pCube90
   externalObjects: {}
   materials:
     importMaterials: 1
