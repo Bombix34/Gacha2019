@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.45078093, g: 0.49895275, b: 0.56531197, a: 1}
+  m_IndirectSpecularColor: {r: 0.4507807, g: 0.4989527, b: 0.56531173, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -245,7 +245,7 @@ MonoBehaviour:
   - gameObject: {fileID: 862434044924779805, guid: 9a4ea5a380ab41b428ef2dcd11e79b14,
       type: 3}
     radius: 14.5
-  - gameObject: {fileID: 927928359679646078, guid: fe487e68bfa0f764b857988a03697a61,
+  - gameObject: {fileID: 8749994126311474488, guid: e2fcfdbf32a732342b4ca21b2935bf3c,
       type: 3}
     radius: 12.5
   - gameObject: {fileID: 960160950666696624, guid: 8315266019a267942abb84d46d0236ae,
@@ -1081,7 +1081,7 @@ PrefabInstance:
     - target: {fileID: 220308042927374707, guid: 8a036456c3cc14a9aa538012eb0a4ac5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 220308042927374707, guid: 8a036456c3cc14a9aa538012eb0a4ac5,
         type: 3}
@@ -1098,12 +1098,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 220308042927374706, guid: 8a036456c3cc14a9aa538012eb0a4ac5,
-        type: 3}
-      propertyPath: catchButterfly
-      value: 
-      objectReference: {fileID: 11400000, guid: d5ebdd0735b964402984356f5e1794ef,
-        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a036456c3cc14a9aa538012eb0a4ac5, type: 3}
 --- !u!1001 &3077040249562532857
