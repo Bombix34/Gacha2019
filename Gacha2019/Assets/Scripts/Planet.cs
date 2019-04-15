@@ -121,7 +121,7 @@ public class Planet : MonoBehaviour
                 {
                     Player.Instance.ResetMaterial();
                 }
-                Player.Instance.GetPlayerAnim().speed = 1f;
+                Player.Instance.SetIsBoosting(false);
             }
         }
         else
@@ -182,8 +182,7 @@ public class Planet : MonoBehaviour
             {
               //  Player.Instance.transform.GetChild(1).GetComponent<Renderer>().material = m_PlayerMaterials[1];
             }
-            Animator playerAnim = Player.Instance.GetComponent<Animator>();
-            Player.Instance.GetPlayerAnim().speed *= 1.5f;
+            Player.Instance.SetIsBoosting(true);
             m_SpeedMultiplier += _SpeedMultiplier;
             m_BoostDuration = _BoostDuration;
         }
@@ -229,6 +228,7 @@ public class Planet : MonoBehaviour
                 Player.Instance.transform.GetChild(1).GetComponent<Renderer>().material = m_PlayerMaterials[0];
             }*/
             m_SpeedMultiplier = 1f;
+            Player.Instance.SetIsBoosting(false);
         }
     }
 

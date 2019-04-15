@@ -6,15 +6,15 @@ public class Player : MonoBehaviour
 {
     static private Player instance = null;
     static public Player Instance { get { return instance; } }
-    
+
     [SerializeField]
     private float m_Speed = 3;
+
+    private Animator m_Animator = null;
 
     private Rigidbody m_Rigidbody;
 
     private float m_KnockBackDuration = 0;
-
-    private Animator m_Animator;
 
     private Material[] baseMats;
 
@@ -49,7 +49,7 @@ public class Player : MonoBehaviour
         Vector3 up = (transform.position - Planet.instance.transform.position).normalized;
         transform.up = up;
         Physics.gravity = up * -9.81f;
-        
+
         if (m_KnockBackDuration > 0)
         {
             m_KnockBackDuration -= Time.deltaTime;
@@ -83,5 +83,15 @@ public class Player : MonoBehaviour
     public Animator GetPlayerAnim()
     {
         return m_Animator;
+    }
+
+    public void SetIsBoosting(bool _Value)
+    {
+        m_Animator.SetBool("IsBoosting", _Value);
+    }
+
+    public void SetIsCapturingButterfly(bool _Value)
+    {
+        m_Animator.SetBool("CapturingButterfly", _Value);
     }
 }

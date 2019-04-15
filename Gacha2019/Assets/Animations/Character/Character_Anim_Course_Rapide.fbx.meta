@@ -1,0 +1,202 @@
+fileFormatVersion: 2
+guid: e6d8af6d2dfaef24ea489df354296d43
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Bind_Baton_01
+    100002: Bind_Baton_02
+    100004: Bind_Baton_03
+    100006: Bind_Baton_04
+    100008: Bind_Baton_05
+    100010: Bind_Clavicle_L
+    100012: Bind_Clavicle_R
+    100014: Bind_Feet_end_L
+    100016: Bind_Feet_end_R
+    100018: Bind_Feet_L
+    100020: Bind_Feet_R
+    100022: Bind_Filet_01
+    100024: Bind_Filet_02
+    100026: Bind_Filet_03
+    100028: Bind_Filet_04
+    100030: Bind_ForeArm_L
+    100032: Bind_ForeArm_R
+    100034: Bind_Hand_End_L
+    100036: Bind_Hand_End_R
+    100038: Bind_Hand_L
+    100040: Bind_Hand_R
+    100042: Bind_Head
+    100044: Bind_Hip
+    100046: Bind_Leg_L
+    100048: Bind_Neck_01
+    100050: Bind_Neck_02
+    100052: Bind_Reg_R
+    100054: Bind_Root
+    100056: Bind_Shoulder_L
+    100058: Bind_Shoulder_R
+    100060: Bind_Spine_01
+    100062: Bind_Spine_02
+    100064: Bind_Spine_03
+    100066: Bind_Tail_01
+    100068: Bind_Tail_02
+    100070: Bind_Tail_03
+    100072: Bind_Tail_04
+    100074: Bind_Tail_05
+    100076: Bind_Tibia_L
+    100078: Bind_Tibia_R
+    100080: Body
+    100082: //RootNode
+    100084: Filet
+    100086: Head
+    100088: Leg_L
+    100090: Leg_R
+    100092: MOD
+    100094: Tail
+    400000: Bind_Baton_01
+    400002: Bind_Baton_02
+    400004: Bind_Baton_03
+    400006: Bind_Baton_04
+    400008: Bind_Baton_05
+    400010: Bind_Clavicle_L
+    400012: Bind_Clavicle_R
+    400014: Bind_Feet_end_L
+    400016: Bind_Feet_end_R
+    400018: Bind_Feet_L
+    400020: Bind_Feet_R
+    400022: Bind_Filet_01
+    400024: Bind_Filet_02
+    400026: Bind_Filet_03
+    400028: Bind_Filet_04
+    400030: Bind_ForeArm_L
+    400032: Bind_ForeArm_R
+    400034: Bind_Hand_End_L
+    400036: Bind_Hand_End_R
+    400038: Bind_Hand_L
+    400040: Bind_Hand_R
+    400042: Bind_Head
+    400044: Bind_Hip
+    400046: Bind_Leg_L
+    400048: Bind_Neck_01
+    400050: Bind_Neck_02
+    400052: Bind_Reg_R
+    400054: Bind_Root
+    400056: Bind_Shoulder_L
+    400058: Bind_Shoulder_R
+    400060: Bind_Spine_01
+    400062: Bind_Spine_02
+    400064: Bind_Spine_03
+    400066: Bind_Tail_01
+    400068: Bind_Tail_02
+    400070: Bind_Tail_03
+    400072: Bind_Tail_04
+    400074: Bind_Tail_05
+    400076: Bind_Tibia_L
+    400078: Bind_Tibia_R
+    400080: Body
+    400082: //RootNode
+    400084: Filet
+    400086: Head
+    400088: Leg_L
+    400090: Leg_R
+    400092: MOD
+    400094: Tail
+    2100000: M_Character
+    4300000: Body
+    4300002: Leg_L
+    4300004: Leg_R
+    4300006: Tail
+    4300008: Head
+    4300010: Filet
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: Body
+    13700002: Filet
+    13700004: Head
+    13700006: Leg_L
+    13700008: Leg_R
+    13700010: Tail
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
