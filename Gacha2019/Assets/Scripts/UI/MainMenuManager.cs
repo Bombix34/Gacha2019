@@ -20,10 +20,16 @@ public class MainMenuManager : MonoBehaviour
             bool isActive = m_SetActiveObjectsToSwitch[i].activeInHierarchy;
             m_SetActiveObjectsToSwitch[i].SetActive(!isActive);
         }
-    }    
+    }
 
     public void QuitClicked()
     {
         Application.Quit();
+    }
+
+    public void ChangeToMainMenu(GameObject _ToDeactivate)
+    {
+        _ToDeactivate.SetActive(false);
+        m_SetActiveObjectsToSwitch[0].SetActive(true);
     }
 }
