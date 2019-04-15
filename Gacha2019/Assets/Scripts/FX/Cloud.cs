@@ -105,7 +105,7 @@ public class Cloud : MonoBehaviour
 
     public void SetEvilSprite()
     {
-
-        GetComponent<SpriteRenderer>()
+        if(evilSprite!=null)
+            GetComponent<SpriteRenderer>().sprite = evilSprite;
     }
 }
