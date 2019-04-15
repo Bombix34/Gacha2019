@@ -167,6 +167,7 @@ public class Planet : MonoBehaviour
 
             transform.rotation = Quaternion.identity;
             transform.GetChild(0).rotation = Quaternion.identity;
+            MusicManager.instance.NextMusic();
 
             return true;
         }
