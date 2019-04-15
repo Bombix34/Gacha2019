@@ -1,0 +1,175 @@
+fileFormatVersion: 2
+guid: 1ad91ac332b21df4e8f93033b036f7f7
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Gpe_Arbre01
+    100002: Gpe_Arbre02
+    100004: Gpe_Arbre03
+    100006: Level01
+    100008: Msh_Arbre01
+    100010: Msh_Arbre02
+    100012: Msh_Arbre03
+    100014: Msh_Feuillage_coeur01
+    100016: Msh_Feuillage_coeur01 1
+    100018: Msh_Feuillage_coeur010
+    100020: Msh_Feuillage_coeur011
+    100022: Msh_Feuillage_coeur012
+    100024: Msh_Feuillage_coeur013
+    100026: Msh_Feuillage_coeur06
+    100028: Msh_Feuillage_coeur06 1
+    100030: Msh_Feuillage_coeur08
+    100032: Msh_Feuillage_coeur08 1
+    100034: Msh_Feuillage_coeur09
+    100036: Msh_Fruits_Coeur
+    100038: pCube124
+    100040: //RootNode
+    100042: transform57
+    100044: transform58
+    100046: transform59
+    100048: transform60
+    100050: transform61
+    100052: transform62
+    100054: transform63
+    100056: transform64
+    100058: transform65
+    100060: transform66
+    100062: transform67
+    100064: transform68
+    100066: transform69
+    100068: transform70
+    100070: transform71
+    400000: Gpe_Arbre01
+    400002: Gpe_Arbre02
+    400004: Gpe_Arbre03
+    400006: Level01
+    400008: Msh_Arbre01
+    400010: Msh_Arbre02
+    400012: Msh_Arbre03
+    400014: Msh_Feuillage_coeur01
+    400016: Msh_Feuillage_coeur01 1
+    400018: Msh_Feuillage_coeur010
+    400020: Msh_Feuillage_coeur011
+    400022: Msh_Feuillage_coeur012
+    400024: Msh_Feuillage_coeur013
+    400026: Msh_Feuillage_coeur06
+    400028: Msh_Feuillage_coeur06 1
+    400030: Msh_Feuillage_coeur08
+    400032: Msh_Feuillage_coeur08 1
+    400034: Msh_Feuillage_coeur09
+    400036: Msh_Fruits_Coeur
+    400038: pCube124
+    400040: //RootNode
+    400042: transform57
+    400044: transform58
+    400046: transform59
+    400048: transform60
+    400050: transform61
+    400052: transform62
+    400054: transform63
+    400056: transform64
+    400058: transform65
+    400060: transform66
+    400062: transform67
+    400064: transform68
+    400066: transform69
+    400068: transform70
+    400070: transform71
+    2100000: Arbre1
+    2100002: Arbre3
+    2100004: Arbre2
+    2100006: play
+    2100008: maison
+    2100010: "mus\xE9e"
+    2100012: mairie
+    2100014: terre
+    2100016: Misc
+    2300000: Msh_Feuillage_coeur013
+    3300000: Msh_Feuillage_coeur013
+    4300000: Msh_Feuillage_coeur013
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

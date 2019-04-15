@@ -13,11 +13,6 @@ public class CreditsSphereBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(transform.up, 1f, Space.World);
-    }
-
-    private void OnEnable()
-    {
-        transform.eulerAngles = new Vector3(0f, -75f, 0f);
+        transform.Rotate(Vector3.forward, -0.75f, Space.World);
     }
 }

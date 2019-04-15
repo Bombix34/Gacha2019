@@ -98,8 +98,9 @@ public class Butterfly : MonoBehaviour
         {
             Planet.instance.OnFinishLayer();
             Player.Instance.LaunchCatchAnim();
-           // GameManager.instance.ChangeTimeScale(0.2f, 0.5f);
-            Destroy(gameObject);
+            transform.position = player.transform.position + player.transform.forward * 2f;
+            // GameManager.instance.ChangeTimeScale(0.2f, 0.5f);
+            Destroy(gameObject, 0.5f);
         }
     }
 }
