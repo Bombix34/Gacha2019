@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db7f7785d783dbb489622d72bdf10f88, type: 3}
+  m_Name: Peaceful
+  m_EditorClassIdentifier: 
+  loop: 1
+  clips:
+  - {fileID: 8300000, guid: bc70eb30d1bd88645a39a2a166ed9466, type: 3}
+  - {fileID: 8300000, guid: ef3b319c77f420f46a04543adf722612, type: 3}
+  - {fileID: 8300000, guid: ac61d50e79e89d5489ce835b4791325a, type: 3}
+  - {fileID: 8300000, guid: 4068b4941b9e7cf468353279a67f18b6, type: 3}
+  - {fileID: 8300000, guid: 3c88dad50b149f84fa9021403d5659e0, type: 3}
